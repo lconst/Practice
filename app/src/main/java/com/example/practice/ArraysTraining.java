@@ -111,7 +111,8 @@ public class ArraysTraining {
      * элементов
      */
     public int maxCountSymbol(int[] array) {
-        int max = 1, count = 1;
+        int max = 1;
+        int count = 1;
         array = sort(array);
         for (int i = 1; i < array.length; i++) {
             if (array[i] == array[i - 1]) {
