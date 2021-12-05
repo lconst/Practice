@@ -48,6 +48,8 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$navigation"
     //ViewBinding
     implementation "com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.0-beta01"
+    //Asynchronous
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

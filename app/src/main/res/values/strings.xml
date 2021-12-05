@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Practice</string>
+    <string name="app_name">Хочу помочь</string>
     <string name="professionLabel">Сфера деятельности</string>
     <string name="pushLabel">Получать push-уведомления</string>
     <string name="friendsLabel">Ваши друзья</string>
@@ -11,4 +11,5 @@
     <string name="help">Помочь</string>
     <string name="friend_photo">Friend photo</string>
     <string name="edit">Edit</string>
+    <string name="loading">Загрузка…</string>
 </resources>

@@ -12,11 +12,11 @@
         tools:layout="@layout/activity_main" />
     <fragment
         android:id="@+id/navigationSearchFragment"
-        android:name="com.example.practice.SearchFragment"
+        android:name="com.example.practice.presentation.search.SearchFragment"
         android:label="@string/search" />
     <fragment
         android:id="@+id/navigationHistoryFragment"
-        android:name="com.example.practice.HistoryFragment"
+        android:name="com.example.practice.presentation.history.HistoryFragment"
         android:label="@string/history" />
     <fragment
         android:id="@+id/navigationProfileFragment"
@@ -24,10 +24,10 @@
         android:label="@string/profile" />
     <fragment
         android:id="@+id/navigationNewsFragment"
-        android:name="com.example.practice.NewsFragment"
+        android:name="com.example.practice.presentation.news.NewsFragment"
         android:label="@string/news" />
     <fragment
         android:id="@+id/navigationHelpFragment"
-        android:name="com.example.practice.HelpFragment"
+        android:name="com.example.practice.presentation.help.HelpFragment"
         android:label="@string/help" />
 </navigation>
