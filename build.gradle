@@ -13,6 +13,11 @@ buildscript {
     }
 }
 
+ext {
+    retrofit = "2.9.0"
+    navigation = "2.3.5"
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

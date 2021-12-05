@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_06x">10dp</dimen>
+    <dimen name="margin_1x">16dp</dimen>
+    <dimen name="margin_2x">20dp</dimen>
+    <dimen name="friend_photo_size">48dp</dimen>
+</resources>
