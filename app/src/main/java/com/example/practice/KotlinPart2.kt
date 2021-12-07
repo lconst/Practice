@@ -11,7 +11,13 @@ data class User(val id: Int, val name: String, val age: Int, val type: Type) {
 }
 
 //Задание №7
-fun User.checkAge() = println(if (this.age > 18) "$this старше 18" else ERROR)
+fun User.checkAge() = println(
+    if (this.age > 18) {
+        "$this старше 18"
+    } else {
+        ERROR
+    }
+)
 
 
 fun main() {
@@ -66,12 +72,12 @@ interface AuthCallback {
 //Задание №10
 fun updateCache() = println("Update cache")
 
-inline fun User.auth(function: () -> Unit) {
+inline fun User.auth(action: () -> Unit) {
     if (checkAge().equals(ERROR)) {
-        function()
-        access.authSuccess()
-    } else {
         access.authFailed()
+    } else {
+        action()
+        access.authSuccess()
     }
 }
 
@@ -86,8 +92,8 @@ sealed class Action {
 fun doAction(action: Action) {
     when (action) {
         is Action.Login -> action.user.auth(::updateCache)
-        Action.Logout -> println("Logout")
-        Action.Registration -> println("Registration")
+        is Action.Logout -> println("Logout")
+        is Action.Registration -> println("Registration")
     }
 
 }
