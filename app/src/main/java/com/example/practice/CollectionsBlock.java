@@ -69,7 +69,7 @@ public class CollectionsBlock<T extends Comparable> {
         result.add(inputList.get(0));
         for (int i = 1; i < inputList.size(); i++) {
             result.add(inputList.get(i));
-            result.addAll(result.subList(0, result.size() - 1));
+            result.addAll(inputList.subList(0, i));
         }
         return result;
     }

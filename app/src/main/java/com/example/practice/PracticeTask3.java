@@ -25,7 +25,6 @@ public class PracticeTask3 {
 
     interface Closure {
         void print();
-
     }
 
     //Задание №3
@@ -59,7 +58,7 @@ public class PracticeTask3 {
         Point newPosition = new Point(point.x, point.y);
         switch (direction) {
             case LEFT:
-                newPosition.x = -STEP;
+                newPosition.x -= STEP;
                 break;
             case RIGHT:
                 newPosition.x += STEP;
@@ -75,8 +74,8 @@ public class PracticeTask3 {
     }
 
     public static void makeManySteps() {
-        Point location = new Point(0,0);
-        Directions [] moving = {UP, UP, LEFT, DOWN, LEFT, DOWN, DOWN, RIGHT, RIGHT, DOWN, RIGHT};
+        Point location = new Point(0, 0);
+        Directions[] moving = {UP, UP, LEFT, DOWN, LEFT, DOWN, DOWN, RIGHT, RIGHT, DOWN, RIGHT};
         for (int i = 0; i < moving.length; i++) {
             location = makeStep(location, moving[i]);
         }
@@ -85,8 +84,9 @@ public class PracticeTask3 {
 
     //Задание №4
     interface Shape {
-        double perimeter();
-        double area();
+        void perimeter();
+
+        void area();
     }
 
     class Rectangle implements Shape {
@@ -95,13 +95,13 @@ public class PracticeTask3 {
         private double width;
 
         @Override
-        public double perimeter() {
-            return (length + width) * 2;
+        public void perimeter() {
+            System.out.println("Perimeter = " + (length + width) * 2);
         }
 
         @Override
-        public double area() {
-            return length * width;
+        public void area() {
+            System.out.println("Area = " + length * width);
         }
     }
 
@@ -110,13 +110,13 @@ public class PracticeTask3 {
         private double length;
 
         @Override
-        public double perimeter() {
-            return length * 4;
+        public void perimeter() {
+            System.out.println("Perimeter = " + length * 4);
         }
 
         @Override
-        public double area() {
-            return length * length;
+        public void area() {
+            System.out.println("Area = " + length * length);
         }
     }
 
@@ -125,13 +125,13 @@ public class PracticeTask3 {
         private double diameter;
 
         @Override
-        public double perimeter() {
-            return diameter * Math.PI;
+        public void perimeter() {
+            System.out.println("Perimeter = " + diameter * Math.PI);
         }
 
         @Override
-        public double area() {
-            return Math.PI * Math.pow(diameter / 2, 2);
+        public void area() {
+            System.out.println("Area = " + Math.PI * Math.pow(diameter / 2, 2));
         }
     }
 }

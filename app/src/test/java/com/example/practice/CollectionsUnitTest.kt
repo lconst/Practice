@@ -1,6 +1,6 @@
 package com.example.practice
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class CollectionsUnitTest {
@@ -23,8 +23,8 @@ class CollectionsUnitTest {
 
     @Test
     fun collectionTask1() {
-        val exceptedInt = listOf(1, 2, 1, 3, 1, 2, 1)
-        val exceptedString = listOf("one", "two", "one", "tree", "one", "two", "one")
+        val exceptedInt = listOf(1, 2, 1, 3, 1, 2)
+        val exceptedString = listOf("one", "two", "one", "tree", "one", "two")
         assertEquals(exceptedInt, collectionsIntBlock.collectionTask1(listOf(1, 2, 3)))
         assertEquals(
             exceptedString,

@@ -1,6 +1,11 @@
 package com.example.practice;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,19 +48,16 @@ public class StringsTraining {
      * идентичных последнему. Если таких нет,
      * вернуть пустой массив
      */
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public int[] getArrayLastSymbol(String text) {
         char key = text.charAt(text.length() - 1);
-        ArrayList<Integer> indexes = new ArrayList<>();
+        List<Integer> indexes = new ArrayList<>();
         for (int i = 0; i < text.length() - 1; i++) {
             if (text.charAt(i) == key) {
                 indexes.add(i);
             }
         }
-        int[] result = new int[indexes.size()];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = indexes.get(i);
-        }
-        return result;
+        return indexes.stream().mapToInt(i -> i).toArray();
     }
 
     /**

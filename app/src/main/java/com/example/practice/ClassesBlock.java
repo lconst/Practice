@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.OptionalDouble;
 import java.util.Random;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Набор заданий по работе с классами в java.
@@ -31,31 +32,31 @@ public interface ClassesBlock {
       значение из этих двух переменных.
      */
     class TwoVariables {
-        private int A;
-        private int B;
+        private int firstValue;
+        private int secondValue;
 
-        public TwoVariables(int a, int b) {
-            A = a;
-            B = b;
+        public TwoVariables(int firstValue, int secondValue) {
+            this.firstValue = firstValue;
+            this.secondValue = secondValue;
         }
 
         public void print() {
-            System.out.printf("A = %d B = %d", A, B);
+            System.out.printf("A = %d B = %d", firstValue, secondValue);
         }
 
         public void changeVariables(int a, int b) {
-            A = a;
-            B = b;
+            firstValue = a;
+            secondValue = b;
         }
 
         public int sum() {
-            int sum = A + B;
+            int sum = firstValue + secondValue;
             System.out.printf("A + B = %d", sum);
             return sum;
         }
 
         public int max() {
-            return Math.max(A, B);
+            return Math.max(firstValue, secondValue);
         }
     }
 
@@ -115,35 +116,35 @@ public interface ClassesBlock {
      */
     class Triangle {
 
-        private Point A;
-        private Point B;
-        private Point C;
+        private Point topA;
+        private Point topB;
+        private Point topC;
 
-        public Triangle(Point a, Point b, Point c) {
-            A = a;
-            B = b;
-            C = c;
+        public Triangle(Point topA, Point topB, Point topC) {
+            this.topA = topA;
+            this.topB = topB;
+            this.topC = topC;
         }
 
         public double square() {
             double semiPerimeter = perimeter() / 2;
             return Math.sqrt(semiPerimeter
-                    * (semiPerimeter - A.lengthTo(B))
-                    * (semiPerimeter - B.lengthTo(C))
-                    * (semiPerimeter - C.lengthTo(A))
+                    * (semiPerimeter - topA.lengthTo(topB))
+                    * (semiPerimeter - topB.lengthTo(topC))
+                    * (semiPerimeter - topC.lengthTo(topA))
             );
         }
 
         public double perimeter() {
-            return A.lengthTo(B) + B.lengthTo(C) + C.lengthTo(A);
+            return topA.lengthTo(topB) + topB.lengthTo(topC) + topC.lengthTo(topA);
         }
 
         public Point crossMedian() {
-            double x = A.x;
-            double x1 = (B.x + C.x) / 2;
-            double y1 = (B.y + C.y) / 2;
-            double xm = (A.x + 2 * x1) / 3;
-            double xy = (A.y + 2 * y1) / 3;
+            double x = topA.x;
+            double x1 = (topB.x + topC.x) / 2;
+            double y1 = (topB.y + topC.y) / 2;
+            double xm = (topA.x + 2 * x1) / 3;
+            double xy = (topA.y + 2 * y1) / 3;
             return new Point(xm, xy);
         }
 
@@ -423,13 +424,13 @@ public interface ClassesBlock {
         }
     }
 
-    class Facutet {
+    class Faculty {
         private int id;
         private String name;
         private List<Exam> exams;
         private List<Enrollee> enrollees;
 
-        public Facutet(int id, String name, List<Exam> exams) {
+        public Faculty(int id, String name, List<Exam> exams) {
             this.id = id;
             this.name = name;
             this.exams = exams;
@@ -450,6 +451,25 @@ public interface ClassesBlock {
             this.id = id;
             this.name = name;
             this.minScore = minScore;
+        }
+    }
+
+    class VerificationSystem {
+        private final double MIN_SCORE = 80.0;
+        private List<Faculty> faculties;
+
+        public VerificationSystem(List<Faculty> faculties) {
+            this.faculties = faculties;
+        }
+
+        public List<Enrollee> getEnrolliesPassedExam() {
+            List<Enrollee> enrollies = new ArrayList<>();
+            faculties.forEach((faculty -> {
+                enrollies.addAll(faculty.enrollees.stream()
+                                .filter(enrollee -> enrollee.getAvgScore() >= MIN_SCORE)
+                                .collect(Collectors.toList()));
+            }));
+            return enrollies;
         }
     }
 
@@ -499,8 +519,8 @@ public interface ClassesBlock {
             orders = new ArrayList<>();
         }
 
-        public void makeOrder(List<Product> product, boolean isPaid) {
-            orders.add(new Order(product, isPaid));
+        public void makeOrder(List<Product> products, boolean isPaid) {
+            orders.add(new Order(products, isPaid));
         }
 
         public void payOrder(@NonNull Order order) {
@@ -532,10 +552,8 @@ public interface ClassesBlock {
     }
 
     class Order {
-        private int id;
         private List<Product> products;
         private boolean isPaid;
-        private boolean isActive;
 
         public Order(List<Product> products, boolean isPaid) {
             this.products = products;
