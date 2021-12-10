@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottom_navigation"
-    app:startDestination="@id/navigationProfileFragment">
+    app:startDestination="@id/navigationHelpFragment">
 
     <activity
         android:id="@+id/mainActivity"
@@ -13,21 +13,26 @@
     <fragment
         android:id="@+id/navigationSearchFragment"
         android:name="com.example.practice.presentation.search.SearchFragment"
-        android:label="@string/search" />
+        android:label="@string/search"
+        tools:layout="@layout/fragment_search"/>
     <fragment
         android:id="@+id/navigationHistoryFragment"
         android:name="com.example.practice.presentation.history.HistoryFragment"
-        android:label="@string/history" />
+        android:label="@string/history"
+        tools:layout="@layout/fragment_history"/>
     <fragment
         android:id="@+id/navigationProfileFragment"
         android:name="com.example.practice.presentation.profile.view.ProfileFragment"
-        android:label="@string/profile" />
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile"/>
     <fragment
         android:id="@+id/navigationNewsFragment"
         android:name="com.example.practice.presentation.news.NewsFragment"
-        android:label="@string/news" />
+        android:label="@string/news"
+        tools:layout="@layout/fragment_news"/>
     <fragment
         android:id="@+id/navigationHelpFragment"
         android:name="com.example.practice.presentation.help.HelpFragment"
-        android:label="@string/help" />
+        android:label="@string/help"
+        tools:layout="@layout/fragment_help"/>
 </navigation>

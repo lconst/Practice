@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.view.LayoutInflater
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.fragment.app.DialogFragment
@@ -16,7 +17,7 @@ import java.io.File
 class DialogTakePhoto : DialogFragment() {
 
     private val viewModel: ProfileViewModel by viewModels({ requireParentFragment() })
-    private val tempDirectory = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+    private val tempDirectory by lazy { requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES) }
     private lateinit var uri: Uri
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -28,6 +29,11 @@ class DialogTakePhoto : DialogFragment() {
             dialogBinding.deletePhoto.setOnClickListener { handleDeletePhoto() }
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        requireContext().getExternalFilesDir(android.os.Environment.DIRECTORY_PICTURES)
     }
 
     private fun handleMakePhoto() {
