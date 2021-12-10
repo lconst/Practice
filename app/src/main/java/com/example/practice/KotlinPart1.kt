@@ -24,9 +24,14 @@ class KotlinPart1 {
             }
         }
 
-        override fun equals(other: Any?): Boolean = (other is Book)
-            && this.price == other.price
-            && this.wordCount == other.wordCount
+        override fun equals(other: Any?): Boolean {
+            if (other == this) return true
+            if ((other !is Book)) {
+                return false
+            }
+            return this.price == other.price
+                && this.wordCount == other.wordCount
+        }
     }
 
     class Magazine(override val price: Int, override val wordCount: Int) : Publication {
@@ -58,7 +63,7 @@ fun main(args: Array<String>) {
     book4?.let { buy(it) }
 
     //Задание №4
-    sum(5,7)
+    sum(5, 7)
 }
 
 //Задание №3
@@ -67,4 +72,4 @@ fun buy(publication: KotlinPart1.Publication) {
 }
 
 //Задание №4
-val sum = {a: Int, b: Int -> println("$a + $b = ${a + b}")}
+val sum = { a: Int, b: Int -> println("$a + $b = ${a + b}") }
