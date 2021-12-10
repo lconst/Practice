@@ -5,6 +5,9 @@ import static com.example.practice.PracticeTask3.Directions.LEFT;
 import static com.example.practice.PracticeTask3.Directions.RIGHT;
 import static com.example.practice.PracticeTask3.Directions.UP;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PracticeTask3 {
 
 
@@ -84,54 +87,84 @@ public class PracticeTask3 {
 
     //Задание №4
     interface Shape {
-        void perimeter();
-
-        void area();
+        double perimeter();
+        double area();
     }
 
-    class Rectangle implements Shape {
+    static class Rectangle implements Shape {
+        private final double length;
+        private final double width;
 
-        private double length;
-        private double width;
-
-        @Override
-        public void perimeter() {
-            System.out.println("Perimeter = " + (length + width) * 2);
+        public Rectangle(double length, double width) {
+            this.length = length;
+            this.width = width;
         }
 
         @Override
-        public void area() {
-            System.out.println("Area = " + length * width);
-        }
-    }
-
-    class Square implements Shape {
-
-        private double length;
-
-        @Override
-        public void perimeter() {
-            System.out.println("Perimeter = " + length * 4);
+        public double perimeter() {
+            return (length + width) * 2;
         }
 
         @Override
-        public void area() {
-            System.out.println("Area = " + length * length);
+        public double area() {
+            return length * width;
         }
     }
 
-    class Circle implements Shape {
+    static class Square implements Shape {
 
-        private double diameter;
+        private final double length;
 
-        @Override
-        public void perimeter() {
-            System.out.println("Perimeter = " + diameter * Math.PI);
+        public Square(double length) {
+            this.length = length;
         }
 
         @Override
-        public void area() {
-            System.out.println("Area = " + Math.PI * Math.pow(diameter / 2, 2));
+        public double perimeter() {
+            return length * 4;
+        }
+
+        @Override
+        public double area() {
+            return length * length;
+        }
+    }
+
+    static class Circle implements Shape {
+
+        private final double diameter;
+
+        public Circle(double diameter) {
+            this.diameter = diameter;
+        }
+
+        @Override
+        public double perimeter() {
+            return diameter * Math.PI;
+        }
+
+        @Override
+        public double area() {
+            return Math.PI * Math.pow(diameter / 2, 2);
+        }
+    }
+
+    static class TestShape {
+        public static void main(String[] args) {
+            Shape rectangle = new Rectangle(5,10);
+            Shape square = new Square(5);
+            Shape circle = new Circle(10);
+            List<Shape> shapes = new ArrayList<>();
+            shapes.add(rectangle);
+            shapes.add(square);
+            shapes.add(circle);
+            for (Shape shape: shapes) {
+                System.out.println(shape.getClass().getSimpleName());
+                System.out.println("Периметр = " + shape.perimeter());
+                System.out.println("Площадь = " + shape.area());
+                System.out.println();
+            }
+
         }
     }
 }
