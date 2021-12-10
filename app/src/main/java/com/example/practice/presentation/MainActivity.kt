@@ -1,12 +1,13 @@
-package com.example.practice
+package com.example.practice.presentation
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.practice.R
 import com.example.practice.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.practice">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
     <application
+        android:name=".PracticeApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Practice">
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.MainActivity"
             android:exported="true" />
         <activity
             android:name=".presentation.splash.SplashActivity"
@@ -21,6 +25,15 @@
 
             </intent-filter>
         </activity>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
     </application>
 
 </manifest>
