@@ -11,11 +11,10 @@ import com.example.practice.model.HelpCategory
 class HelpFragment : Fragment(R.layout.fragment_help) {
 
     private val binding by viewBinding(FragmentHelpBinding::bind)
-    private val categoryList = mutableListOf<HelpCategory>()
+    private val categoryList by lazy { createCategories() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        generateFakeCategories()
         initRecycler()
     }
 
@@ -30,10 +29,14 @@ class HelpFragment : Fragment(R.layout.fragment_help) {
         )
     }
 
-    private fun generateFakeCategories() {
-        repeat(5) {
-            categoryList.add(HelpCategory(R.drawable.ic_profile, "Lorem"))
-        }
+    private fun createCategories(): List<HelpCategory> {
+        return listOf(
+            HelpCategory(R.drawable.children, R.string.children),
+            HelpCategory(R.drawable.adult, R.string.adult),
+            HelpCategory(R.drawable.elderly, R.string.elderly),
+            HelpCategory(R.drawable.animals, R.string.animals),
+            HelpCategory(R.drawable.events, R.string.events)
+        )
     }
 
     companion object {

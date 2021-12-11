@@ -9,8 +9,8 @@ class HelpCategoryViewHolder(private val itemBinding: HelpCategoryItemBinding) :
 
     fun bind(category: HelpCategory) {
         with(itemBinding) {
-            categoryImage.setImageResource(category.image)
-            categoryName.text = category.name
+            categoryImage.setImageResource(category.imageResourceId)
+            categoryName.text = this.root.context.getText(category.nameResourceId)
         }
     }
 }

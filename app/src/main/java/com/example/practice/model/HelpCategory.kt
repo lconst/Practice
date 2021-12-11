@@ -1,3 +1,3 @@
 package com.example.practice.model
 
-class HelpCategory(val image: Int, val name: String)
+class HelpCategory(val imageResourceId: Int, val nameResourceId: Int)
