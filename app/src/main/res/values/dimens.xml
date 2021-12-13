@@ -8,4 +8,5 @@
     <dimen name="margin_photo_dialog">26dp</dimen>
     <dimen name="margin_top_photo_dialog">44dp</dimen>
     <dimen name="margin_category_help">12dp</dimen>
+    <dimen name="margin_organization_item">18dp</dimen>
 </resources>

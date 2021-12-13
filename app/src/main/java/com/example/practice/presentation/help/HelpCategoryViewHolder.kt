@@ -1,16 +1,16 @@
 package com.example.practice.presentation.help
 
-import androidx.recyclerview.widget.RecyclerView
+import com.example.practice.BaseViewHolder
 import com.example.practice.databinding.HelpCategoryItemBinding
 import com.example.practice.model.HelpCategory
 
 class HelpCategoryViewHolder(private val itemBinding: HelpCategoryItemBinding) :
-    RecyclerView.ViewHolder(itemBinding.root) {
+    BaseViewHolder<HelpCategory>(itemBinding.root) {
 
-    fun bind(category: HelpCategory) {
+    override fun bind(entity: HelpCategory) {
         with(itemBinding) {
-            categoryImage.setImageResource(category.imageResourceId)
-            categoryName.text = this.root.context.getText(category.nameResourceId)
+            categoryImage.setImageResource(entity.imageResourceId)
+            categoryName.text = this.root.context.getText(entity.nameResourceId)
         }
     }
 }

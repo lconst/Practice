@@ -1,15 +1,15 @@
 package com.example.practice.presentation.profile.view
 
-import androidx.recyclerview.widget.RecyclerView
+import com.example.practice.BaseViewHolder
 import com.example.practice.databinding.FriendItemBinding
 import com.example.practice.model.Friend
 
-class FriendViewHolder(private val itemBinding: FriendItemBinding) : RecyclerView.ViewHolder(itemBinding.root) {
+class FriendViewHolder(private val itemBinding: FriendItemBinding) : BaseViewHolder<Friend>(itemBinding.root) {
 
-    fun bind(friend: Friend) {
+    override fun bind(entity: Friend) {
         with(itemBinding) {
-            photo.setImageResource(friend.photo)
-            fullName.text = friend.fullName
+            photo.setImageResource(entity.photo)
+            fullName.text = entity.fullName
         }
     }
 }

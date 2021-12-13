@@ -33,7 +33,7 @@ class DialogTakePhoto : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireContext().getExternalFilesDir(android.os.Environment.DIRECTORY_PICTURES)
+        requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
     }
 
     private fun handleMakePhoto() {
