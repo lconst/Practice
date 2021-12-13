@@ -15,12 +15,13 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        handleSearchClick()
+        initSearch()
         initTabs()
     }
 
-    private fun handleSearchClick() {
+    private fun initSearch() {
         with(binding) {
+            search.maxWidth = Int.MAX_VALUE
             search.setOnSearchClickListener { title.visibility = View.GONE }
             search.setOnCloseListener {
                 title.isVisible = true
