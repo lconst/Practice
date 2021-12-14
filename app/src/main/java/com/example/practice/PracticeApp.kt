@@ -1,6 +1,7 @@
 package com.example.practice
 
 import android.app.Application
+import com.jakewharton.threetenabp.AndroidThreeTen
 import timber.log.Timber
 
 class PracticeApp : Application() {
@@ -10,5 +11,6 @@ class PracticeApp : Application() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+        AndroidThreeTen.init(this)
     }
 }
