@@ -36,7 +36,7 @@
         <item name="android:textColor">@color/black_87</item>
     </style>
 
-    <style name="TextStyle2" parent="@android:style/TextAppearance">
+    <style name="TitleToolbarStyle" parent="@android:style/TextAppearance">
         <item name="android:textSize">21sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>

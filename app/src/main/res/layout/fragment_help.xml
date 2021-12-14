@@ -19,7 +19,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                style="@style/TextStyle2"
+                style="@style/TitleToolbarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

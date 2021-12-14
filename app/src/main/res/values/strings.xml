@@ -24,6 +24,7 @@
     <string name="search_hint">Введите название организации</string>
     <string name="search_key_words">Ключевые слова: мастер-класс, помощь</string>
     <string name="search_result_number">Результаты поиска: 109 мероприятий</string>
+    <string name="filter">Фильтр</string>
 
     <string-array name="tabs_title">
         <item>По мероприятиям</item>
