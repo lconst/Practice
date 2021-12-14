@@ -1,10 +1,13 @@
 package com.example.practice.presentation.profile.view
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
@@ -25,10 +28,16 @@ class DialogTakePhoto : DialogFragment() {
             val builder = AlertDialog.Builder(it)
             val dialogBinding = DialogTakePhotoBinding.inflate(LayoutInflater.from(it))
             builder.setView(dialogBinding.root)
+            dialogBinding.uploadPhoto.setOnClickListener { handleUploadPhoto() }
             dialogBinding.makePhoto.setOnClickListener { handleMakePhoto() }
             dialogBinding.deletePhoto.setOnClickListener { handleDeletePhoto() }
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
+    }
+
+    private fun handleUploadPhoto() {
+        val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+        uploadPhoto.launch(gallery)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,6 +74,14 @@ class DialogTakePhoto : DialogFragment() {
         registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
             if (success) {
                 viewModel.photoUri.value = uri
+            }
+            dismiss()
+        }
+
+    private val uploadPhoto =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                viewModel.photoUri.value = result.data?.data
             }
             dismiss()
         }
