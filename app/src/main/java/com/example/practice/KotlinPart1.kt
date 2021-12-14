@@ -25,7 +25,7 @@ class KotlinPart1 {
         }
 
         override fun equals(other: Any?): Boolean {
-            if (other == this) return true
+            if (other === this) return true
             if ((other !is Book)) {
                 return false
             }
