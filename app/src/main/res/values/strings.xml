@@ -27,6 +27,14 @@
     <string name="filter">Фильтр</string>
     <string name="help_category">Категории помощи</string>
     <string name="done">Применить</string>
+    <string name="share">Поделиться</string>
+    <string name="have_questions">У вас есть вопросы?</string>
+    <string name="write_us"><u>Напишите нам</u></string>
+    <string name="navigate_to_site"><u>Перейти на сайт оргранизации</u></string>
+    <string name="help_by_things">Помочь\nвещами</string>
+    <string name="become_volunteer">Стать\nволонтером</string>
+    <string name="help_professionals">Проф.\nпомощь</string>
+    <string name="help_coins">Помочь\nденьгами</string>
 
     <string-array name="tabs_title">
         <item>По мероприятиям</item>

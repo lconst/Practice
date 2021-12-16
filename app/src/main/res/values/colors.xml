@@ -8,6 +8,9 @@
     <color name="black_87">#de000000</color>
     <color name="black_70">#b3000000</color>
     <color name="black_38">#61000000</color>
+    <color name="black_60">#99000000</color>
+    <color name="black_54">#8a000000</color>
+    <color name="black_40">#66000000</color>
     <color name="leaf">#66a636</color>
     <color name="cool_grey">#aabbbb</color>
     <color name="melon">#fe7460</color>
@@ -20,4 +23,5 @@
     <color name="grey_background">#e8eded</color>
     <color name="search_key_words">#8a000000</color>
     <color name="news_title">#627f8f</color>
+    <color name="news_details_date">#94998a</color>
 </resources>

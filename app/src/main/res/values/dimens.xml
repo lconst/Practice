@@ -11,4 +11,6 @@
     <dimen name="margin_organization_item">18dp</dimen>
     <dimen name="margin_news_description">26dp</dimen>
     <dimen name="margin_vertical_filter_category">18dp</dimen>
+    <dimen name="people_image_size">36dp</dimen>
+    <dimen name="separator_height">70dp</dimen>
 </resources>
