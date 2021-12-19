@@ -2,14 +2,30 @@ package com.example.practice.presentation.news
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.example.practice.BaseRecyclerAdapter
-import com.example.practice.BaseViewHolder
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import com.example.practice.databinding.NewsItemBinding
 import com.example.practice.model.News
 
-class NewsAdapter(news: List<News>) : BaseRecyclerAdapter<News>(news) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<News> {
+class NewsAdapter(private val clickListener: (Int) -> Unit) :
+    ListAdapter<News, NewsViewHolder>(differCallback) {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val binding = NewsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return NewsViewHolder(binding)
+        return NewsViewHolder(binding, clickListener)
+    }
+
+    override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
+        holder.bind(getItem(position))
+    }
+}
+
+private val differCallback = object : DiffUtil.ItemCallback<News>() {
+    override fun areItemsTheSame(oldItem: News, newItem: News): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: News, newItem: News): Boolean {
+        return oldItem == newItem
     }
 }

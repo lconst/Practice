@@ -64,6 +64,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_06x"
+            android:maxLines="3"
+            android:ellipsize="end"
             android:paddingStart="@dimen/margin_news_description"
             android:paddingEnd="@dimen/margin_news_description"
             android:textAlignment="center"

@@ -4,14 +4,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.practice.PracticeApp
 import com.example.practice.R
 import com.example.practice.databinding.FragmentHelpBinding
-import com.example.practice.model.HelpCategory
+import com.example.practice.model.Category
 
 class HelpFragment : Fragment(R.layout.fragment_help) {
 
     private val binding by viewBinding(FragmentHelpBinding::bind)
-    private val categoryList by lazy { createCategories() }
+    private val categoryList by lazy { loadCategories() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,14 +30,8 @@ class HelpFragment : Fragment(R.layout.fragment_help) {
         )
     }
 
-    private fun createCategories(): List<HelpCategory> {
-        return listOf(
-            HelpCategory(R.drawable.children, R.string.children),
-            HelpCategory(R.drawable.adult, R.string.adult),
-            HelpCategory(R.drawable.elderly, R.string.elderly),
-            HelpCategory(R.drawable.animals, R.string.animals),
-            HelpCategory(R.drawable.events, R.string.events)
-        )
+    private fun loadCategories(): List<Category> {
+        return PracticeApp.instance.categoryRepository.getCategories()
     }
 
     companion object {

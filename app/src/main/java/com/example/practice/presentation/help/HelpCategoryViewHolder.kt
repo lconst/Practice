@@ -2,15 +2,16 @@ package com.example.practice.presentation.help
 
 import com.example.practice.BaseViewHolder
 import com.example.practice.databinding.HelpCategoryItemBinding
-import com.example.practice.model.HelpCategory
+import com.example.practice.model.Category
+import com.example.practice.utils.setImageByResourceName
 
 class HelpCategoryViewHolder(private val itemBinding: HelpCategoryItemBinding) :
-    BaseViewHolder<HelpCategory>(itemBinding.root) {
+    BaseViewHolder<Category>(itemBinding.root) {
 
-    override fun bind(entity: HelpCategory) {
+    override fun bind(entity: Category) {
         with(itemBinding) {
-            categoryImage.setImageResource(entity.imageResourceId)
-            categoryName.text = this.root.context.getText(entity.nameResourceId)
+            categoryImage.setImageByResourceName(entity.imageResourceName)
+            categoryName.text = entity.name
         }
     }
 }

@@ -1,0 +1,176 @@
+[
+  {
+    "id": 0,
+    "posterResourceName": "news_image_1",
+    "title": "Спонсоры отремонтируют школу-интернат",
+    "dateStart": 1639915437,
+    "dateEnd": 1642507437,
+    "owner": "Благотворительный Фонд «Счастливый Мир»",
+    "location": "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+    "phoneNumbers": [
+      "+7 (937) 037 37-73",
+      "+7 (937) 016 16-16"
+    ],
+    "email": "help@mail.ru",
+    "imagesResourcesNames": [
+      "cardimage_1",
+      "cardimage_2",
+      "cardimage_3"
+    ],
+    "description": "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
+    "site": "https://help.com",
+    "followers": [
+      {
+        "id": 1,
+        "name": "Some1",
+        "avatarResourceName": "photo_1"
+      },
+      {
+        "id": 2,
+        "name": "Some2",
+        "avatarResourceName": "photo_2"
+      },
+      {
+        "id": 3,
+        "name": "Some3",
+        "avatarResourceName": "photo_3"
+      },
+      {
+        "id": 4,
+        "name": "Some4",
+        "avatarResourceName": "photo_4"
+      },
+      {
+        "id": 5,
+        "name": "Some5",
+        "avatarResourceName": "photo_5"
+      },
+      {
+        "id": 6,
+        "name": "Some6",
+        "avatarResourceName": "photo_1"
+      }
+    ],
+    "categoriesId": [
+      1,
+      2
+    ]
+  },
+  {
+    "id": 2,
+    "posterResourceName": "news_image_2",
+    "title": "Новость для пожилых с животными",
+    "dateStart": 1639742420,
+    "dateEnd": 1639742420,
+    "owner": "Благотворительный Фонд «Счастливый Мир»",
+    "location": "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+    "phoneNumbers": [
+      "+7 (937) 037 37-73",
+      "+7 (937) 016 16-16"
+    ],
+    "email": "help@mail.ru",
+    "imagesResourcesNames": [
+      "cardimage_1",
+      "cardimage_2",
+      "cardimage_3"
+    ],
+    "description": "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
+    "site": "https://help.com",
+    "followers": [
+      {
+        "id": 1,
+        "name": "Some1",
+        "avatarResourceName": "photo_1"
+      },
+      {
+        "id": 2,
+        "name": "Some2",
+        "avatarResourceName": "photo_2"
+      },
+      {
+        "id": 3,
+        "name": "Some3",
+        "avatarResourceName": "photo_3"
+      },
+      {
+        "id": 4,
+        "name": "Some4",
+        "avatarResourceName": "photo_4"
+      },
+      {
+        "id": 5,
+        "name": "Some5",
+        "avatarResourceName": "photo_5"
+      },
+      {
+        "id": 6,
+        "name": "Some6",
+        "avatarResourceName": "photo_1"
+      }
+    ],
+    "categoriesId": [
+      3,
+      4
+    ]
+  },
+  {
+    "id": 3,
+    "posterResourceName": "news_image_2",
+    "title": "Новость для всех категорий помощи",
+    "dateStart": 1639742420,
+    "dateEnd": 1639742420,
+    "owner": "Благотворительный Фонд «Счастливый Мир»",
+    "location": "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+    "phoneNumbers": [
+      "+7 (937) 037 37-73",
+      "+7 (937) 016 16-16"
+    ],
+    "email": "help@mail.ru",
+    "imagesResourcesNames": [
+      "cardimage_1",
+      "cardimage_2",
+      "cardimage_3"
+    ],
+    "description": "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
+    "site": "https://help.com",
+    "followers": [
+      {
+        "id": 1,
+        "name": "Some1",
+        "avatarResourceName": "photo_1"
+      },
+      {
+        "id": 2,
+        "name": "Some2",
+        "avatarResourceName": "photo_2"
+      },
+      {
+        "id": 3,
+        "name": "Some3",
+        "avatarResourceName": "photo_3"
+      },
+      {
+        "id": 4,
+        "name": "Some4",
+        "avatarResourceName": "photo_4"
+      },
+      {
+        "id": 5,
+        "name": "Some5",
+        "avatarResourceName": "photo_5"
+      },
+      {
+        "id": 6,
+        "name": "Some6",
+        "avatarResourceName": "photo_1"
+      }
+    ],
+    "categoriesId": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  }
+]

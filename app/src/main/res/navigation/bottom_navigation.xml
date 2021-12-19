@@ -32,7 +32,8 @@
         tools:layout="@layout/fragment_news" >
         <action
             android:id="@+id/action_navigationNewsFragment_to_filterFragment"
-            app:destination="@id/filterFragment" />
+            app:destination="@id/filterFragment"
+            app:launchSingleTop="false" />
         <action
             android:id="@+id/action_navigationNewsFragment_to_newsDetails"
             app:destination="@id/newsDetails" />
@@ -46,10 +47,10 @@
         android:id="@+id/filterFragment"
         android:name="com.example.practice.presentation.news.filter.FilterFragment"
         android:label="@string/filter"
-        tools:layout="@layout/fragment_filter" />
+        tools:layout="@layout/fragment_filter_category" />
     <fragment
         android:id="@+id/newsDetails"
-        android:name="com.example.practice.presentation.news.NewsDetailsFragment"
+        android:name="com.example.practice.presentation.news.details.NewsDetailsFragment"
         android:label="NewsDetails"
         tools:layout="@layout/fragment_news_details">
         <argument

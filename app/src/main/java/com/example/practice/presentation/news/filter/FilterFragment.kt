@@ -1,5 +1,6 @@
 package com.example.practice.presentation.news.filter
 
+import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -8,14 +9,19 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.practice.PracticeApp
+import com.example.practice.PracticeApp.Companion.APP_PREFERENCES
 import com.example.practice.R
-import com.example.practice.databinding.FragmentFilterBinding
-import com.example.practice.model.Filter
+import com.example.practice.databinding.FragmentFilterCategoryBinding
+import com.example.practice.model.Category
 import com.example.practice.presentation.MainActivity
 import com.example.practice.utils.setupToolbar
 
-class FilterFragment : Fragment(R.layout.fragment_filter) {
-    private val binding by viewBinding(FragmentFilterBinding::bind)
+class FilterFragment : Fragment(R.layout.fragment_filter_category) {
+
+    private val binding by viewBinding(FragmentFilterCategoryBinding::bind)
+    private val categoryList by lazy { loadCategories() }
+    private val adapter by lazy { FilterCategoryAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,16 +40,23 @@ class FilterFragment : Fragment(R.layout.fragment_filter) {
     }
 
     private fun initRecycler() {
-        binding.recycler.adapter = FilterAdapter(createFakeFilters())
+        binding.recycler.adapter = adapter
+        adapter.submitList(categoryList)
     }
 
-    private fun createFakeFilters() = listOf(
-        Filter(getString(R.string.children), true),
-        Filter(getString(R.string.adult), true),
-        Filter(getString(R.string.elderly), true),
-        Filter(getString(R.string.animals), true),
-        Filter(getString(R.string.events), true)
-    )
+    private fun loadCategories(): List<Category> {
+        return PracticeApp.instance.categoryRepository.getCategories()
+    }
+
+    private fun saveFilterCategories() {
+        val sharedPref = requireActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE) ?: return
+        with(sharedPref.edit()) {
+            categoryList.forEach { category ->
+                putBoolean(category.name + "id ${category.id}", category.isEnabled)
+            }
+            apply()
+        }
+    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.filter_toolbar_menu, menu)
@@ -53,7 +66,10 @@ class FilterFragment : Fragment(R.layout.fragment_filter) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> findNavController().navigateUp()
-            R.id.done -> findNavController().navigateUp()
+            R.id.done -> {
+                saveFilterCategories()
+                findNavController().navigateUp()
+            }
         }
         return true
     }

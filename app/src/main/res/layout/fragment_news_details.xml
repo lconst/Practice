@@ -49,20 +49,29 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="@tools:sample/lorem" />
 
+            <ImageView
+                android:id="@+id/imageCalendar"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="@dimen/margin_2x"
+                android:layout_marginTop="@dimen/margin_1x"
+                android:src="@drawable/ic_calendar_small_grey"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/newsTitle"
+                tools:ignore="ContentDescription" />
+
             <TextView
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_2x"
-                android:layout_marginTop="@dimen/margin_1x"
-                android:layout_marginEnd="@dimen/margin_2x"
+
                 android:drawablePadding="@dimen/margin_06x"
                 android:lineSpacingExtra="4sp"
                 android:textColor="@color/news_details_date"
                 android:textSize="12sp"
-                app:drawableLeftCompat="@drawable/ic_calendar_small_grey"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/newsTitle"
+                app:layout_constraintBottom_toBottomOf="@+id/imageCalendar"
+                app:layout_constraintStart_toEndOf="@id/imageCalendar"
+                app:layout_constraintTop_toTopOf="@+id/imageCalendar"
                 tools:text="@tools:sample/date/mmddyy" />
 
             <TextView
@@ -70,11 +79,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_06x"
-                android:layout_marginEnd="@dimen/margin_2x"
                 android:lineSpacingExtra="8sp"
                 android:textColor="@color/black_60"
                 android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/date"
+                app:layout_constraintStart_toStartOf="@+id/imageCalendar"
                 app:layout_constraintTop_toBottomOf="@+id/date"
                 tools:text="@tools:sample/lorem" />
 
@@ -91,10 +99,11 @@
             <TextView
                 android:id="@+id/address"
                 style="@style/TextStyle10"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_06x"
-                android:layout_marginEnd="82dp"
+                android:layout_marginEnd="80dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView3"
                 app:layout_constraintTop_toTopOf="@+id/imageView3"
                 tools:text="@tools:sample/lorem" />
@@ -155,12 +164,12 @@
                 android:layout_height="158dp"
                 android:layout_marginStart="@dimen/margin_2x"
                 android:layout_marginTop="@dimen/margin_2x"
-                android:src="@drawable/cardimage_1"
                 app:layout_constraintEnd_toStartOf="@+id/smallImage1"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/haveQuestions"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/cardimage_1" />
 
             <ImageView
                 android:id="@+id/smallImage1"
@@ -169,12 +178,13 @@
                 android:layout_marginStart="@dimen/margin_06x"
                 android:layout_marginEnd="@dimen/margin_2x"
                 android:scaleType="centerCrop"
-                android:src="@drawable/cardimage_2"
+                app:layout_constraintBottom_toTopOf="@+id/smallImage2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/mainImage"
                 app:layout_constraintTop_toTopOf="@+id/mainImage"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/cardimage_2" />
 
             <ImageView
                 android:id="@+id/smallImage2"
@@ -184,11 +194,13 @@
                 android:layout_marginTop="@dimen/margin_06x"
                 android:layout_marginEnd="@dimen/margin_2x"
                 android:scaleType="centerCrop"
-                android:src="@drawable/cardimage_3"
                 app:layout_constraintBottom_toBottomOf="@+id/mainImage"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/mainImage"
-                tools:ignore="ContentDescription" />
+                app:layout_constraintTop_toBottomOf="@+id/smallImage1"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/cardimage_3" />
 
             <TextView
                 android:id="@+id/description"
@@ -231,10 +243,10 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:ignore="SpeakableTextPresentCheck"
                     tools:itemCount="5"
-                    tools:listitem="@layout/people_item" />
+                    tools:listitem="@layout/follower_item" />
 
                 <TextView
-                    android:id="@+id/peopleCount"
+                    android:id="@+id/followersCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
