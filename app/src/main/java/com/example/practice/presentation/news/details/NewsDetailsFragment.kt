@@ -17,6 +17,7 @@ import com.example.practice.presentation.MainActivity
 import com.example.practice.presentation.news.details.NewsDetailsFollowersAdapter.Companion.VISIBLE_FOLLOWERS_NUMBER
 import com.example.practice.utils.setImageByResourceName
 import com.example.practice.utils.setupToolbar
+import kotlinx.coroutines.runBlocking
 import timber.log.Timber
 
 class NewsDetailsFragment : Fragment(R.layout.fragment_news_details) {
@@ -43,16 +44,19 @@ class NewsDetailsFragment : Fragment(R.layout.fragment_news_details) {
             imageView.setImageByResourceName(news.imagesResourcesNames[index])
         }
         description.text = news.description
-        followersCount.text = "+${news.followers.count() - VISIBLE_FOLLOWERS_NUMBER}"
+        followersCount.text = resources.getString(
+            R.string.followers_count,
+            news.followers.count() - VISIBLE_FOLLOWERS_NUMBER
+        )
     }
 
     private fun initRecycler() {
         binding.recycler.adapter = NewsDetailsFollowersAdapter(news.followers)
     }
 
-    private fun getNewsDetails(): News {
+    private fun getNewsDetails(): News = runBlocking {
         val args: NewsDetailsFragmentArgs by navArgs()
-        return PracticeApp.instance.newsRepository.getNewsById(args.newsId)
+        PracticeApp.instance.newsRepository.getNewsByIdSuspend(args.newsId)
     }
 
     private fun share() {

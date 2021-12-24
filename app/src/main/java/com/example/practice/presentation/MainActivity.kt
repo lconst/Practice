@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         val navFragment =
             supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         navView.setupWithNavController(navFragment.navController)
+        navView.setOnItemReselectedListener {}
     }
 
     companion object {

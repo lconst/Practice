@@ -1,4 +1,4 @@
-package com.example.practice.presentation.news.viewmodel
+package com.example.practice.presentation.help.viewmodel
 
 import android.annotation.SuppressLint
 import android.app.Application
@@ -7,25 +7,26 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.AsyncTask
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import com.example.practice.concurrency.GetDataIntentService
 import com.example.practice.data.CategoryRepository
-import com.example.practice.data.NewsRepository
-import com.example.practice.model.News
+import com.example.practice.model.Category
 import com.example.practice.utils.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.util.concurrent.Executors
 
-class NewsViewModel(
-    private val newsRepository: NewsRepository,
+class HelpViewModel(
     private val categoryRepository: CategoryRepository,
     private val context: Application
 ) : AndroidViewModel(context) {
 
-    private val newsListMutable = MutableLiveData<List<News>>()
-    val newsList: LiveData<List<News>> get() = newsListMutable
+    private val categoriesListMutable = MutableLiveData<List<Category>>()
+    val categoriesList: LiveData<List<Category>> get() = categoriesListMutable
 
     private val isDataLoadingMutable = MutableLiveData<Boolean>()
     val isDataLoading: LiveData<Boolean> get() = isDataLoadingMutable
@@ -34,9 +35,15 @@ class NewsViewModel(
 
     init {
         when (CONCURRENT_MODE) {
-            CONCURRENT_MODE_COROUTINES -> loadNews()
-            CONCURRENT_MODE_ASYNC_TASK -> GetDataAsyncTask().execute()
-            CONCURRENT_MODE_EXECUTOR -> loadCategoryByExecutor()
+            CONCURRENT_MODE_COROUTINES -> {
+                loadCategories()
+            }
+            CONCURRENT_MODE_ASYNC_TASK -> {
+                GetDataAsyncTask().execute()
+            }
+            CONCURRENT_MODE_EXECUTOR -> {
+                loadCategoryByExecutor()
+            }
             CONCURRENT_MODE_INTENT_SERVICE -> {
                 registerReceiver()
                 loadCategoriesByIntentService()
@@ -44,46 +51,18 @@ class NewsViewModel(
         }
     }
 
-    private fun loadNews() {
+    private fun loadCategories() {
         isDataLoadingMutable.value = true
         viewModelScope.launch {
             delay(SLEEP_TIME)
-            val filterCategoriesIds = categoryRepository.getCategoriesSuspend()
-                .filter { category -> category.isEnabled }
-                .map { category -> category.id }
-
-            newsListMutable.value = newsRepository.getNewsAllSuspend()
-                .filter { news ->
-                    checkNewsByFilter(news, filterCategoriesIds)
-                }
+            categoriesListMutable.value = categoryRepository.getCategoriesSuspend()
             isDataLoadingMutable.value = false
         }
     }
 
-    private fun checkNewsByFilter(news: News, categoriesId: List<Int>): Boolean {
-        var found = false
-        news.categoriesId.forEach { id ->
-            if (categoriesId.contains(id)) {
-                found = true
-            }
-        }
-        return found
-    }
-
-    private fun getFilteredNews(): List<News> {
-        val filterCategoriesIds = categoryRepository.getCategories()
-            .filter { category -> category.isEnabled }
-            .map { category -> category.id }
-
-        return newsRepository.getNewsAll()
-            .filter { news ->
-                checkNewsByFilter(news, filterCategoriesIds)
-            }
-    }
-
     @SuppressLint("StaticFieldLeak")
     inner class GetDataAsyncTask :
-        AsyncTask<Unit, Unit, List<News>>() {
+        AsyncTask<Unit, Unit, List<Category>>() {
 
         override fun onPreExecute() {
             super.onPreExecute()
@@ -91,20 +70,20 @@ class NewsViewModel(
             Timber.d("GetDataAsyncTask start")
         }
 
-        override fun doInBackground(vararg params: Unit): List<News> {
+        override fun doInBackground(vararg params: Unit): List<Category> {
             try {
                 Thread.sleep(SLEEP_TIME)
-                return getFilteredNews()
+                return categoryRepository.getCategories()
             } catch (e: InterruptedException) {
                 e.printStackTrace()
             }
             return arrayListOf()
         }
 
-        override fun onPostExecute(result: List<News>) {
+        override fun onPostExecute(result: List<Category>) {
             super.onPostExecute(result)
             isDataLoadingMutable.value = false
-            newsListMutable.value = result
+            categoriesListMutable.value = result
             Timber.d("GetDataAsyncTask end")
         }
     }
@@ -115,7 +94,7 @@ class NewsViewModel(
             .execute {
                 try {
                     Thread.sleep(SLEEP_TIME)
-                    newsListMutable.postValue(getFilteredNews())
+                    categoriesListMutable.postValue(categoryRepository.getCategories())
                 } catch (e: InterruptedException) {
                     e.printStackTrace()
                 } finally {
@@ -129,7 +108,7 @@ class NewsViewModel(
         val intentService = Intent(context, GetDataIntentService::class.java)
         intentService.putExtra(
             GetDataIntentService.DATA_TYPE_KEY,
-            GetDataIntentService.DATA_TYPE_NEWS
+            GetDataIntentService.DATA_TYPE_CATEGORIES
         )
         context.startService(intentService)
     }
@@ -144,8 +123,8 @@ class NewsViewModel(
     inner class DataBroadcastReceiver : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             val dataType = intent?.getIntExtra(GetDataIntentService.DATA_TYPE_KEY, 0)
-            if (dataType == GetDataIntentService.DATA_TYPE_NEWS) {
-                newsListMutable.value =
+            if (dataType == GetDataIntentService.DATA_TYPE_CATEGORIES) {
+                categoriesListMutable.value =
                     intent.getParcelableArrayListExtra(GetDataIntentService.RESPONSE_GET_DATA_KEY)
             }
             isDataLoadingMutable.value = false
@@ -154,6 +133,6 @@ class NewsViewModel(
 
     override fun onCleared() {
         super.onCleared()
-        dataReceiver?.let { context.unregisterReceiver(dataReceiver) }
+        dataReceiver?.let { context.unregisterReceiver(it) }
     }
 }

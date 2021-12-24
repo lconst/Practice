@@ -6,6 +6,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -24,7 +25,8 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     private val viewModel: NewsViewModel by viewModels {
         NewViewModelFactory(
             PracticeApp.instance.newsRepository,
-            PracticeApp.instance.categoryRepository
+            PracticeApp.instance.categoryRepository,
+            PracticeApp.instance
         )
     }
     private val adapter by lazy { NewsAdapter(::onNewsClick) }
@@ -34,9 +36,15 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         (requireActivity() as MainActivity).setupToolbar(binding.toolBar)
         setHasOptionsMenu(true)
         initRecycler()
-        viewModel.loadNews()
+        observeNewsByViewModel()
+    }
+
+    private fun observeNewsByViewModel() {
         viewModel.newsList.observe(viewLifecycleOwner, { newsList ->
             adapter.submitList(newsList)
+        })
+        viewModel.isDataLoading.observe(viewLifecycleOwner, { isLoading ->
+            binding.progressBar.isVisible = isLoading
         })
     }
 
@@ -45,8 +53,12 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     }
 
     private fun onNewsClick(newsId: Int) {
-        findNavController().navigate(R.id.action_navigationNewsFragment_to_newsDetails, bundleOf(ARG_NEWS_ID_KEY to newsId))
+        findNavController().navigate(
+            R.id.action_navigationNewsFragment_to_newsDetails,
+            bundleOf(ARG_NEWS_ID_KEY to newsId)
+        )
     }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.news_toolbar_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
