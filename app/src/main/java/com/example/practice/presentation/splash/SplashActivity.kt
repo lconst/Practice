@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.practice.R
-import com.example.practice.presentation.MainActivity
+import com.example.practice.presentation.auth.LoginActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -18,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             delay(DURATION)
-            MainActivity.start(this@SplashActivity)
+            LoginActivity.start(this@SplashActivity)
         }
     }
 

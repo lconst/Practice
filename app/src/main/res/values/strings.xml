@@ -37,4 +37,14 @@
         <item>По мероприятиям</item>
         <item>По НКО</item>
     </string-array>
+    <string name="auth">Авторизация</string>
+    <string name="auth_text">Для участия в мероприятиях войдите в приложение через социальые сети</string>
+    <string name="auth_text_2">Или авторизуйтесь через приложение</string>
+    <string name="e_mail">E-mail</string>
+    <string name="e_mail_hint">Введите e-mail</string>
+    <string name="password">Пароль</string>
+    <string name="password_hint">Введите пароль</string>
+    <string name="login">Войти</string>
+    <string name="forgot_password"><u>Забыли пароль?</u></string>
+    <string name="registration"><u>Регистрация</u></string>
 </resources>
