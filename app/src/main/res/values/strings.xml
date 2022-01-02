@@ -18,8 +18,8 @@
     <string name="choose_help_category">Выберите категорию помощи</string>
     <string name="children">Дети</string>
     <string name="search_hint">Введите название организации</string>
-    <string name="search_key_words">Ключевые слова: мастер-класс, помощь</string>
-    <string name="search_result_number">Результаты поиска: 109 мероприятий</string>
+    <string name="search_key_words">Ключевые слова: %s</string>
+    <string name="search_result_number">Результаты поиска: %d мероприятий</string>
     <string name="filter">Фильтр</string>
     <string name="help_category">Категории помощи</string>
     <string name="done">Применить</string>
@@ -47,4 +47,7 @@
     <string name="login">Войти</string>
     <string name="forgot_password"><u>Забыли пароль?</u></string>
     <string name="registration"><u>Регистрация</u></string>
+    <string name="empty_search_text_1">Напишите в строке поиска название мероприятия или ключевые слова.</string>
+    <string name="empty_search_text_2">Например,\u0020</string>
+    <string name="empty_search_text_3"><u>мастер-класс, помощь</u></string>
 </resources>

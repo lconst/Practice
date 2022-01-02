@@ -56,42 +56,26 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        android:id="@+id/keyWords"
-        style="@style/TextStyle3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_2x"
-        android:layout_marginTop="@dimen/margin_2x"
-        android:layout_marginEnd="@dimen/margin_2x"
-        android:text="@string/search_key_words"
-        android:textColor="@color/search_key_words"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBar" />
-
-    <TextView
-        android:id="@+id/resultNumber"
-        style="@style/TextStyle3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_2x"
-        android:layout_marginEnd="@dimen/margin_2x"
-        android:text="@string/search_result_number"
-        android:textColor="@color/search_key_words"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/keyWords" />
-
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/margin_2x"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultNumber">
+        app:layout_constraintTop_toBottomOf="@+id/appBar">
 
     </androidx.viewpager2.widget.ViewPager2>
+
+    <ProgressBar
+        android:visibility="invisible"
+        android:indeterminateTint="@color/leaf"
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

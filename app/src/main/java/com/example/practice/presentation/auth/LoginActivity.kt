@@ -48,4 +48,3 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
         }
     }
 }
-
