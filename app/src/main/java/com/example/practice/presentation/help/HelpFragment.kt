@@ -18,8 +18,7 @@ class HelpFragment : Fragment(R.layout.fragment_help) {
     private val adapter = HelpCategoryAdapter()
     private val viewModel: HelpViewModel by viewModels {
         HelpViewModelFactory(
-            PracticeApp.instance.categoryRepository,
-            PracticeApp.instance
+            PracticeApp.instance.categoryRepository
         )
     }
 

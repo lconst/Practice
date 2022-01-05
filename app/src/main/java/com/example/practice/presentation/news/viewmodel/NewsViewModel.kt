@@ -1,31 +1,24 @@
 package com.example.practice.presentation.news.viewmodel
 
-import android.annotation.SuppressLint
-import android.app.Application
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
-import android.os.AsyncTask
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.example.practice.concurrency.GetDataIntentService
+import androidx.lifecycle.ViewModel
 import com.example.practice.data.CategoryRepository
 import com.example.practice.data.NewsRepository
+import com.example.practice.model.Category
 import com.example.practice.model.News
 import com.example.practice.utils.*
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
-import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 
 class NewsViewModel(
     private val newsRepository: NewsRepository,
     private val categoryRepository: CategoryRepository,
-    private val context: Application
-) : AndroidViewModel(context) {
+) : ViewModel() {
 
     private val newsListMutable = MutableLiveData<List<News>>()
     val newsList: LiveData<List<News>> get() = newsListMutable
@@ -33,34 +26,55 @@ class NewsViewModel(
     private val isDataLoadingMutable = MutableLiveData<Boolean>()
     val isDataLoading: LiveData<Boolean> get() = isDataLoadingMutable
 
-    private var dataReceiver: DataBroadcastReceiver? = null
+    private val compositeDisposable = CompositeDisposable()
 
     init {
-        when (CONCURRENT_MODE) {
-            CONCURRENT_MODE_COROUTINES -> loadNews()
-            CONCURRENT_MODE_ASYNC_TASK -> GetDataAsyncTask().execute()
-            CONCURRENT_MODE_EXECUTOR -> loadCategoryByExecutor()
-            CONCURRENT_MODE_INTENT_SERVICE -> {
-                registerReceiver()
-                loadCategoriesByIntentService()
-            }
-        }
+        loadNews()
+        observeChangeCategories()
     }
 
     private fun loadNews() {
         isDataLoadingMutable.value = true
-        viewModelScope.launch {
-            delay(SLEEP_TIME)
-            val filterCategoriesIds = categoryRepository.getCategoriesSuspend()
-                .filter { category -> category.isEnabled }
-                .map { category -> category.id }
+        val disposable = Single.zip(
+            categoryRepository.getCategories(),
+            newsRepository.getNewsAllObservable(),
+            { categoryList, newsList ->
+                Timber.d("loadNews zip ${Thread.currentThread()}")
+                getActualNews(categoryList, newsList)
+            })
+            .subscribeOn(Schedulers.io())
+            .delay(SLEEP_TIME, TimeUnit.MILLISECONDS)
+            .doOnSubscribe { Timber.d("loadNews doOnSubscribe ${Thread.currentThread()}") }
 
-            newsListMutable.value = newsRepository.getNewsAllSuspend()
-                .filter { news ->
-                    checkNewsByFilter(news, filterCategoriesIds)
-                }
-            isDataLoadingMutable.value = false
-        }
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSuccess { Timber.d("loadNews doOnSuccess ${Thread.currentThread()}") }
+            .subscribe { news ->
+                isDataLoadingMutable.value = false
+                newsListMutable.value = news
+            }
+        compositeDisposable.add(disposable)
+    }
+
+    private fun observeChangeCategories() {
+        val disposable = categoryRepository.categoryChanged
+            .subscribe {
+                loadNews()
+            }
+        compositeDisposable.add(disposable)
+    }
+
+    private fun getActualNews(categories: List<Category>, news: List<News>): List<News> {
+        val activeCategoryIds = getActualCategoryIds(categories)
+        return getActualNewsForCategories(news, activeCategoryIds)
+    }
+
+    private fun getActualCategoryIds(categories: List<Category>): List<Int> {
+        return categories.filter { category -> category.isEnabled }
+            .map { category -> category.id }
+    }
+
+    private fun getActualNewsForCategories(news: List<News>, categoriesId: List<Int>): List<News> {
+        return news.filter { item -> checkNewsByFilter(item, categoriesId) }
     }
 
     private fun checkNewsByFilter(news: News, categoriesId: List<Int>): Boolean {
@@ -73,90 +87,8 @@ class NewsViewModel(
         return found
     }
 
-    private fun getFilteredNews(): List<News> {
-        val filterCategoriesIds = categoryRepository.getCategories()
-            .filter { category -> category.isEnabled }
-            .map { category -> category.id }
-
-        return newsRepository.getNewsAll()
-            .filter { news ->
-                checkNewsByFilter(news, filterCategoriesIds)
-            }
-    }
-
-    @SuppressLint("StaticFieldLeak")
-    inner class GetDataAsyncTask :
-        AsyncTask<Unit, Unit, List<News>>() {
-
-        override fun onPreExecute() {
-            super.onPreExecute()
-            isDataLoadingMutable.value = true
-            Timber.d("GetDataAsyncTask start")
-        }
-
-        override fun doInBackground(vararg params: Unit): List<News> {
-            try {
-                Thread.sleep(SLEEP_TIME)
-                return getFilteredNews()
-            } catch (e: InterruptedException) {
-                e.printStackTrace()
-            }
-            return arrayListOf()
-        }
-
-        override fun onPostExecute(result: List<News>) {
-            super.onPostExecute(result)
-            isDataLoadingMutable.value = false
-            newsListMutable.value = result
-            Timber.d("GetDataAsyncTask end")
-        }
-    }
-
-    private fun loadCategoryByExecutor() {
-        isDataLoadingMutable.value = true
-        Executors.newSingleThreadExecutor()
-            .execute {
-                try {
-                    Thread.sleep(SLEEP_TIME)
-                    newsListMutable.postValue(getFilteredNews())
-                } catch (e: InterruptedException) {
-                    e.printStackTrace()
-                } finally {
-                    isDataLoadingMutable.postValue(false)
-                }
-            }
-    }
-
-    private fun loadCategoriesByIntentService() {
-        isDataLoadingMutable.value = true
-        val intentService = Intent(context, GetDataIntentService::class.java)
-        intentService.putExtra(
-            GetDataIntentService.DATA_TYPE_KEY,
-            GetDataIntentService.DATA_TYPE_NEWS
-        )
-        context.startService(intentService)
-    }
-
-    private fun registerReceiver() {
-        dataReceiver = DataBroadcastReceiver()
-        val intentFilter = IntentFilter(GetDataIntentService.ACTION_GET_DATA)
-            .apply { addCategory(Intent.CATEGORY_DEFAULT) }
-        context.registerReceiver(dataReceiver, intentFilter)
-    }
-
-    inner class DataBroadcastReceiver : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            val dataType = intent?.getIntExtra(GetDataIntentService.DATA_TYPE_KEY, 0)
-            if (dataType == GetDataIntentService.DATA_TYPE_NEWS) {
-                newsListMutable.value =
-                    intent.getParcelableArrayListExtra(GetDataIntentService.RESPONSE_GET_DATA_KEY)
-            }
-            isDataLoadingMutable.value = false
-        }
-    }
-
     override fun onCleared() {
         super.onCleared()
-        dataReceiver?.let { context.unregisterReceiver(dataReceiver) }
+        compositeDisposable.clear()
     }
 }

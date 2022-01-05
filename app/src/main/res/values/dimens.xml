@@ -15,5 +15,4 @@
     <dimen name="separator_height">70dp</dimen>
     <dimen name="margin_auth_text_horizontal">56dp</dimen>
     <dimen name="auth_social_button_size">40dp</dimen>
-    <dimen name="auth_edit_margin_top">12dp</dimen>
 </resources>

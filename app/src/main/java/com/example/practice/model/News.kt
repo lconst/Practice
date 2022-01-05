@@ -40,7 +40,8 @@ data class News(
     @SerialName("site")
     val site: String,
     @SerialName("title")
-    val title: String
+    val title: String,
+    var isRead: Boolean = false
 ) : Parcelable {
     private fun getDateStart(): LocalDate {
         return createLocalDateForTimestamp(dateStart)

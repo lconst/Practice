@@ -16,17 +16,21 @@ import com.example.practice.databinding.FragmentFilterCategoryBinding
 import com.example.practice.model.Category
 import com.example.practice.presentation.MainActivity
 import com.example.practice.utils.setupToolbar
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 class FilterFragment : Fragment(R.layout.fragment_filter_category) {
 
     private val binding by viewBinding(FragmentFilterCategoryBinding::bind)
-    private val categoryList by lazy { loadCategories() }
+    private var categoryList: List<Category> = listOf()
     private val adapter by lazy { FilterCategoryAdapter() }
+    private val repository = PracticeApp.instance.categoryRepository
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initToolbar()
         initRecycler()
+        loadCategories()
     }
 
     private fun initToolbar() {
@@ -41,21 +45,28 @@ class FilterFragment : Fragment(R.layout.fragment_filter_category) {
 
     private fun initRecycler() {
         binding.recycler.adapter = adapter
-        adapter.submitList(categoryList)
     }
 
-    private fun loadCategories(): List<Category> {
-        return PracticeApp.instance.categoryRepository.getCategories()
+    private fun loadCategories() {
+        repository.getCategories()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { categories ->
+                adapter.submitList(categories)
+                categoryList = categories
+            }
     }
 
     private fun saveFilterCategories() {
-        val sharedPref = requireActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE) ?: return
+        val sharedPref =
+            requireActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE) ?: return
         with(sharedPref.edit()) {
             categoryList.forEach { category ->
                 putBoolean(category.name + "id ${category.id}", category.isEnabled)
             }
             apply()
         }
+        repository.update(categoryList)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

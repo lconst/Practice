@@ -6,39 +6,38 @@ import com.example.practice.model.Category
 import com.example.practice.utils.CATEGORIES_JSON_FILE_NAME
 import com.example.practice.utils.jsonFormat
 import com.example.practice.utils.readAssetFileToString
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.subjects.PublishSubject
 import kotlinx.serialization.decodeFromString
 
-class CategoryRepository(
-    private val context: Context,
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
-) {
+class CategoryRepository(private val context: Context) {
 
-    suspend fun getCategoriesSuspend(): List<Category> = withContext(ioDispatcher) {
-        val data = readAssetFileToString(context, CATEGORIES_JSON_FILE_NAME)
-        val categories = jsonFormat.decodeFromString<List<Category>>(data)
-        val sharedPref = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
-        sharedPref?.let {
-            categories.forEach { category ->
-                category.isEnabled =
-                    sharedPref.getBoolean(category.name + "id ${category.id}", true)
+    private var cachedCategory: List<Category> = listOf()
+    val categoryChanged: PublishSubject<Boolean> = PublishSubject.create()
+
+    fun getCategories(): Single<List<Category>> {
+        return if (cachedCategory.isEmpty()) {
+            Single.fromCallable {
+                val data = readAssetFileToString(context, CATEGORIES_JSON_FILE_NAME)
+                val categories = jsonFormat.decodeFromString<List<Category>>(data)
+                val sharedPref = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
+                sharedPref?.let {
+                    categories.forEach { category ->
+                        category.isEnabled =
+                            sharedPref.getBoolean(category.name + "id ${category.id}", true)
+                    }
+                }
+                cachedCategory = categories
+                categoryChanged.onNext(true)
+                cachedCategory
             }
+        } else {
+            Single.just(cachedCategory)
         }
-        categories
     }
 
-    fun getCategories(): List<Category> {
-        val data = readAssetFileToString(context, CATEGORIES_JSON_FILE_NAME)
-        val categories = jsonFormat.decodeFromString<List<Category>>(data)
-        val sharedPref = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
-        sharedPref?.let {
-            categories.forEach { category ->
-                category.isEnabled =
-                    sharedPref.getBoolean(category.name + "id ${category.id}", true)
-            }
-        }
-        return categories
+    fun update(categories: List<Category>) {
+        cachedCategory = categories
+        categoryChanged.onNext(true)
     }
 }

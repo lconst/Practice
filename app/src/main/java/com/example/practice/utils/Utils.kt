@@ -28,11 +28,6 @@ fun ImageView.setImageByResourceName(name: String) {
 
 val jsonFormat = Json { ignoreUnknownKeys = true }
 
-const val SLEEP_TIME = 5000L
-const val CONCURRENT_MODE_COROUTINES = 0
-const val CONCURRENT_MODE_ASYNC_TASK = 1
-const val CONCURRENT_MODE_EXECUTOR = 2
-const val CONCURRENT_MODE_INTENT_SERVICE = 3
-const val CONCURRENT_MODE = CONCURRENT_MODE_COROUTINES
+const val SLEEP_TIME = 1000L
 const val NEWS_JSON_FILE_NAME = "news.json"
 const val CATEGORIES_JSON_FILE_NAME = "categories.json"
