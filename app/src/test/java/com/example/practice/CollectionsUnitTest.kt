@@ -40,14 +40,14 @@ class CollectionsUnitTest {
                 listOf("one", "two", "tree"),
                 listOf("one", "two")
             )
-        );
+        )
         assertEquals(
             false,
             collectionsStringBlock.collectionTask2(
                 listOf("one", "two", "tree"),
                 listOf("five", "two")
             )
-        );
+        )
     }
 
     @Test
@@ -70,7 +70,7 @@ class CollectionsUnitTest {
 
     @Test
     fun collectionTask5() {
-        //simple test for run task and show result in output
+        // simple test for run task and show result in output
         assert(collectionsStringBlock.collectionTask5())
     }
 }

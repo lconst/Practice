@@ -1,12 +1,13 @@
 package com.example.practice
 
+import org.junit.Assert.assertArrayEquals
 import org.junit.Test
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 
 class UnitTestElementaryArrays {
 
-    //Elementary
+    // Elementary
     @Test
     fun averageValue() {
         assertEquals(5.0, ElementaryTraining().averageValue(2, 8), 0.0)
@@ -38,7 +39,7 @@ class UnitTestElementaryArrays {
         assertEquals(6, ElementaryTraining().zeroEvenNumber(6))
     }
 
-    //Arrays
+    // Arrays
     @Test
     fun sort() {
         val param = intArrayOf(5, 4, 3, 2, 1)

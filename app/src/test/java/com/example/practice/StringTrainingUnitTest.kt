@@ -1,6 +1,7 @@
 package com.example.practice
 
-import org.junit.Assert.*
+import org.junit.Assert.assertArrayEquals
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class StringTrainingUnitTest {
@@ -13,7 +14,7 @@ class StringTrainingUnitTest {
     }
     @Test
     fun getArrayLastSymbol() {
-        val excepted = intArrayOf(0,3,6)
+        val excepted = intArrayOf(0, 3, 6)
         assertArrayEquals(excepted, stringTraining.getArrayLastSymbol("AB_AB_AB_A"))
     }
     @Test

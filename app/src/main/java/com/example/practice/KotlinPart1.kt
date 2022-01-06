@@ -1,7 +1,7 @@
 package com.example.practice
 
 class KotlinPart1 {
-    //Задание №1
+    // Задание №1
     interface Publication {
         val price: Int
         val wordCount: Int
@@ -29,8 +29,7 @@ class KotlinPart1 {
             if ((other !is Book)) {
                 return false
             }
-            return this.price == other.price
-                && this.wordCount == other.wordCount
+            return this.price == other.price && this.wordCount == other.wordCount
         }
     }
 
@@ -39,10 +38,9 @@ class KotlinPart1 {
             return "Magazine"
         }
     }
-
 }
 
-//Задание №2
+// Задание №2
 fun main(args: Array<String>) {
     val book1 = KotlinPart1.Book(20, 10_000)
     val book2 = KotlinPart1.Book(20, 10_000)
@@ -55,21 +53,21 @@ fun main(args: Array<String>) {
     println(book1 === book2)
     println(book1 == book2)
 
-    //Задание №3
+    // Задание №3
     val book3 = KotlinPart1.Book(20, 10_000)
     val book4: KotlinPart1.Publication? = null
 
     buy(book3)
     book4?.let { buy(it) }
 
-    //Задание №4
+    // Задание №4
     sum(5, 7)
 }
 
-//Задание №3
+// Задание №3
 fun buy(publication: KotlinPart1.Publication) {
     println("The purchase is complete. The purchase amount was ${publication.price}")
 }
 
-//Задание №4
+// Задание №4
 val sum = { a: Int, b: Int -> println("$a + $b = ${a + b}") }
