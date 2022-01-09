@@ -48,7 +48,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private fun handleQuerySearch() {
         RxSearchObservable().fromView(binding.search)
-            .debounce(500, TimeUnit.MILLISECONDS)
+            .debounce(TIMEOUT, TimeUnit.MILLISECONDS)
             .distinctUntilChanged()
             .subscribe { text -> viewModel.updateSearchQuery(text) }
     }
@@ -60,5 +60,9 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                 tab.text = tabsTitles[position]
             }.attach()
         }
+    }
+
+    companion object {
+        private const val TIMEOUT = 500L
     }
 }

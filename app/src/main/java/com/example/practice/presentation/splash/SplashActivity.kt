@@ -2,12 +2,11 @@ package com.example.practice.presentation.splash
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import com.example.practice.R
 import com.example.practice.presentation.auth.LoginActivity
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
@@ -16,13 +15,12 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        lifecycleScope.launch {
-            delay(DURATION)
+        Handler(Looper.getMainLooper()).postDelayed({
             LoginActivity.start(this@SplashActivity)
-        }
+        }, TIMEOUT)
     }
 
     companion object {
-        private const val DURATION = 3000L
+        private const val TIMEOUT = 3000L
     }
 }

@@ -12,10 +12,12 @@ import com.example.practice.presentation.MainActivity
 import com.example.practice.utils.setupToolbar
 import com.jakewharton.rxbinding4.widget.textChanges
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 class LoginActivity : AppCompatActivity(R.layout.activity_login) {
 
     private val binding by viewBinding(ActivityLoginBinding::bind)
+    private val compositeDisposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,10 +28,11 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
         val emailDispose = binding.email.textChanges()
         val passwordDispose = binding.password.textChanges()
 
-        Observable.combineLatest(emailDispose, passwordDispose, { email, pass ->
-            binding.login.isEnabled = (email.length >= 6 && pass.length >= 6)
+        val dispose = Observable.combineLatest(emailDispose, passwordDispose, { email, pass ->
+            binding.login.isEnabled = (email.length >= SYMBOL_COUNT && pass.length >= SYMBOL_COUNT)
         }).subscribe()
 
+        compositeDisposable.addAll(dispose)
         binding.login.setOnClickListener { MainActivity.start(this) }
     }
 
@@ -40,11 +43,18 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
         return true
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.clear()
+    }
+
     companion object {
         fun start(context: Context) {
             val intent = Intent(context, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK + Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }
+
+        private const val SYMBOL_COUNT = 6
     }
 }
