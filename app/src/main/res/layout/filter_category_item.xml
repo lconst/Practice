@@ -8,7 +8,7 @@
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/category"
         style="@style/TextStyle8"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_2x"
         android:layout_marginTop="@dimen/margin_vertical_filter_category"
@@ -21,10 +21,12 @@
         tools:text="@string/children" />
 
     <View
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginStart="@dimen/margin_2x"
         android:layout_marginTop="@dimen/margin_vertical_filter_category"
         android:background="@color/cool_grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/category" />
 </androidx.constraintlayout.widget.ConstraintLayout>

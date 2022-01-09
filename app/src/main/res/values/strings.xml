@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Хочу помочь</string>
-    <string name="professionLabel">Сфера деятельности</string>
-    <string name="pushLabel">Получать push-уведомления</string>
-    <string name="friendsLabel">Ваши друзья</string>
+    <string name="profession_label">Сфера деятельности</string>
+    <string name="push_label">Получать push-уведомления</string>
+    <string name="friends_label">Ваши друзья</string>
     <string name="logout">Выйти из аккаунта</string>
     <string name="news">Новости</string>
     <string name="search">Поиск</string>

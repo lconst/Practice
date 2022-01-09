@@ -10,14 +10,14 @@
         android:layout_width="188dp"
         android:layout_height="188dp"
         android:src="@drawable/ic_icon_zoom"
-        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintBottom_toTopOf="@+id/hintText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/hintText"
         style="@style/TextStyle3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -26,31 +26,29 @@
         android:layout_marginBottom="@dimen/margin_06x"
         android:text="@string/empty_search_text_1"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintBottom_toTopOf="@+id/exampleText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/exampleText"
         style="@style/TextStyle3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="62dp"
         android:text="@string/empty_search_text_2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView9"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/exampleWord"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="@+id/textView7" />
+        app:layout_constraintStart_toStartOf="@+id/hintText" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/exampleWord"
         style="@style/TextStyleLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/empty_search_text_3"
-        app:layout_constraintEnd_toEndOf="@+id/textView7"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
+        app:layout_constraintEnd_toEndOf="@+id/hintText"
+        app:layout_constraintStart_toEndOf="@+id/exampleText"
+        app:layout_constraintTop_toTopOf="@+id/exampleText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,7 +47,7 @@
         android:layout_marginStart="@dimen/margin_2x"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="@dimen/margin_2x"
-        android:text="@string/professionLabel"
+        android:text="@string/profession_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/date" />
 
@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_2x"
         android:layout_marginTop="28dp"
-        android:text="@string/pushLabel"
+        android:text="@string/push_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/professions" />
 
@@ -86,10 +86,11 @@
 
     <View
         android:id="@+id/guidLine1"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginTop="18dp"
         android:background="@color/cool_grey"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pushLabel" />
 
@@ -101,13 +102,13 @@
         android:layout_marginStart="@dimen/margin_2x"
         android:layout_marginTop="@dimen/margin_2x"
         android:layout_marginEnd="@dimen/margin_2x"
-        android:text="@string/friendsLabel"
+        android:text="@string/friends_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guidLine1" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_2x"
         android:layout_marginTop="@dimen/margin_1x"
@@ -115,6 +116,7 @@
         android:layout_marginBottom="@dimen/margin_06x"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/guidLine2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/friendsLabel"
         tools:itemCount="5"
@@ -122,11 +124,12 @@
 
     <View
         android:id="@+id/guidLine2"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginBottom="@dimen/margin_2x"
         android:background="@color/cool_grey"
         app:layout_constraintBottom_toTopOf="@id/logout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button

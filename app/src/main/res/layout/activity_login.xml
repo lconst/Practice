@@ -11,9 +11,10 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBar"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.Toolbar
@@ -32,7 +33,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/authText1"
             style="@style/TextStyle3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -51,7 +52,6 @@
             android:layout_height="@dimen/auth_social_button_size"
             android:src="@drawable/ic_vk"
             app:layout_constraintEnd_toStartOf="@+id/fb"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/fb"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -63,9 +63,8 @@
             android:layout_marginTop="@dimen/margin_2x"
             android:src="@drawable/ic_fb"
             app:layout_constraintEnd_toStartOf="@+id/ok"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/vk"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/authText1"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <ImageButton
@@ -74,13 +73,12 @@
             android:layout_height="@dimen/auth_social_button_size"
             android:src="@drawable/ic_ok"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/fb"
             app:layout_constraintTop_toTopOf="@+id/fb"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/authText2"
             style="@style/TextStyle3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -91,7 +89,7 @@
             app:layout_constraintTop_toBottomOf="@+id/fb" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/emailLabel"
             style="@style/TextStyle15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -99,17 +97,19 @@
             android:layout_marginTop="@dimen/margin_2x"
             android:text="@string/e_mail"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/authText2" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailWrapper"
             style="@style/EditTextStyleAuth"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_2x"
             android:layout_marginEnd="@dimen/margin_2x"
             app:hintEnabled="false"
-            app:layout_constraintTop_toBottomOf="@+id/textView5">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailLabel">
 
             <EditText
                 android:id="@+id/email"
@@ -127,7 +127,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/passLabel"
             style="@style/TextStyle15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -140,12 +140,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordWrapper"
             style="@style/EditTextStyleAuth"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            app:layout_constraintTop_toBottomOf="@+id/passLabel"
             app:passwordToggleEnabled="true">
 
             <EditText
@@ -166,13 +166,15 @@
 
         <Button
             android:id="@+id/login"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_2x"
             android:layout_marginTop="26dp"
             android:layout_marginEnd="@dimen/margin_2x"
             android:enabled="false"
             android:text="@string/login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/passwordWrapper" />
 
         <TextView

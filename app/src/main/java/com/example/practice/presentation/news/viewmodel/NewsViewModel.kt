@@ -41,11 +41,11 @@ class NewsViewModel(
             { categoryList, newsList ->
                 Timber.d("loadNews zip ${Thread.currentThread()}")
                 getActualNews(categoryList, newsList)
-            })
+            }
+        )
             .subscribeOn(Schedulers.io())
             .delay(SLEEP_TIME, TimeUnit.MILLISECONDS)
             .doOnSubscribe { Timber.d("loadNews doOnSubscribe ${Thread.currentThread()}") }
-
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSuccess { Timber.d("loadNews doOnSuccess ${Thread.currentThread()}") }
             .subscribe { news ->

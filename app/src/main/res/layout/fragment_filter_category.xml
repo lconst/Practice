@@ -9,7 +9,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,30 +44,33 @@
 
     <View
         android:id="@+id/decoratorTop"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginTop="@dimen/margin_2x"
         android:background="@color/cool_grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/help_category" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="-10dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/decoratorTop"
+        app:layout_constraintTop_toBottomOf="@+id/decoratorTop"
         tools:itemCount="5"
         tools:listitem="@layout/filter_category_item" />
 
     <View
         android:id="@+id/decoratorBottom"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="1dp"
         android:background="@color/cool_grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recycler" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

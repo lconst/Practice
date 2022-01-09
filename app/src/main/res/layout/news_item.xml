@@ -15,12 +15,11 @@
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="222dp"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="@+id/fade"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription"
@@ -28,7 +27,7 @@
 
         <ImageView
             android:id="@+id/fade"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="222dp"
             android:scaleType="fitXY"
             android:src="@drawable/fade"
@@ -40,9 +39,9 @@
         <TextView
             android:id="@+id/title"
             style="@style/TextStyleNewsTitle"
-            android:textAlignment="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fade"
@@ -65,8 +64,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_06x"
-            android:maxLines="3"
             android:ellipsize="end"
+            android:maxLines="3"
             android:paddingStart="@dimen/margin_news_description"
             android:paddingEnd="@dimen/margin_news_description"
             android:textAlignment="center"
@@ -78,10 +77,12 @@
 
         <FrameLayout
             android:id="@+id/frameLayout"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="32dp"
             android:layout_marginTop="@dimen/margin_1x"
             android:background="@color/turtle_green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/description">
 
             <TextView
