@@ -5,6 +5,7 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.5.31'
     id 'androidx.navigation.safeargs'
     id("kotlin-parcelize")
+    id "kotlin-kapt"
 }
 
 android {
@@ -41,8 +42,11 @@ android {
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
+    //noinspection GradleDependency
     implementation 'androidx.appcompat:appcompat:1.4.0'
+    //noinspection GradleDependency
     implementation 'com.google.android.material:material:1.4.0'
+    //noinspection GradleDependency
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
 
     //Retrofit
@@ -66,6 +70,13 @@ dependencies {
     implementation "io.reactivex.rxjava3:rxjava:$rx_java"
     implementation "com.jakewharton.rxbinding4:rxbinding:$rx_binding"
     implementation "com.jakewharton.rxbinding4:rxbinding-core:$rx_binding"
+    //Room
+    //noinspection GradleDependency
+    implementation "androidx.room:room-runtime:$room"
+    annotationProcessor "androidx.room:room-compiler:$room"
+    kapt("androidx.room:room-compiler:$room")
+    //noinspection GradleDependency
+    implementation "androidx.room:room-rxjava3:$room"
 
     //noinspection GradleDynamicVersion
     testImplementation 'junit:junit:4.+'

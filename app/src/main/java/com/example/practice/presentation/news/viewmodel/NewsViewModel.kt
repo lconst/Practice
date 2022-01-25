@@ -9,12 +9,13 @@ import com.example.practice.model.Category
 import com.example.practice.model.News
 import com.example.practice.utils.*
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import kotlinx.serialization.ExperimentalSerializationApi
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
+@ExperimentalSerializationApi
 class NewsViewModel(
     private val newsRepository: NewsRepository,
     private val categoryRepository: CategoryRepository,
@@ -35,22 +36,19 @@ class NewsViewModel(
 
     private fun loadNews() {
         isDataLoadingMutable.value = true
-        val disposable = Single.zip(
-            categoryRepository.getCategories(),
-            newsRepository.getNewsAllObservable(),
-            { categoryList, newsList ->
-                Timber.d("loadNews zip ${Thread.currentThread()}")
-                getActualNews(categoryList, newsList)
+        val disposable = newsRepository.getNewsAll()
+            .flatMap { news ->
+                newsListMutable.postValue(news)
+                categoryRepository.getCategories()
             }
-        )
             .subscribeOn(Schedulers.io())
             .delay(SLEEP_TIME, TimeUnit.MILLISECONDS)
             .doOnSubscribe { Timber.d("loadNews doOnSubscribe ${Thread.currentThread()}") }
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnSuccess { Timber.d("loadNews doOnSuccess ${Thread.currentThread()}") }
-            .subscribe { news ->
+            .doOnNext { Timber.d("loadNews doOnSuccess ${Thread.currentThread()}") }
+            .subscribe { categories ->
                 isDataLoadingMutable.value = false
-                newsListMutable.value = news
+                newsListMutable.value = newsListMutable.value?.let { getActualNews(categories, it) }
             }
         compositeDisposable.add(disposable)
     }

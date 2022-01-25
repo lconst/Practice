@@ -1,7 +1,5 @@
 package com.example.practice.model
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.threeten.bp.LocalDate
@@ -10,7 +8,6 @@ import org.threeten.bp.temporal.ChronoUnit
 import java.util.Calendar
 import java.util.TimeZone
 
-@Parcelize
 @Serializable
 data class News(
     @SerialName("categoriesId")
@@ -42,7 +39,7 @@ data class News(
     @SerialName("title")
     val title: String,
     var isRead: Boolean = false
-) : Parcelable {
+) {
     private fun getDateStart(): LocalDate {
         return createLocalDateForTimestamp(dateStart)
     }
@@ -68,7 +65,6 @@ data class News(
     }
 }
 
-@Parcelize
 @Serializable
 data class Follower(
     @SerialName("avatarResourceName")
@@ -77,4 +73,4 @@ data class Follower(
     val id: Int,
     @SerialName("name")
     val name: String
-) : Parcelable
+)

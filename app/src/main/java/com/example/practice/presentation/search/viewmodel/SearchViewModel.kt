@@ -5,7 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.practice.data.NewsRepository
 import com.example.practice.model.News
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
+import kotlinx.serialization.ExperimentalSerializationApi
 
+@ExperimentalSerializationApi
 class SearchViewModel(newsRepository: NewsRepository) : ViewModel() {
 
     private val newsListMutable = MutableLiveData<List<News>>()
@@ -17,16 +22,27 @@ class SearchViewModel(newsRepository: NewsRepository) : ViewModel() {
     private val searchQueryMutable = MutableLiveData<String>()
     val searchQuery: LiveData<String> get() = searchQueryMutable
 
+    private val compositeDisposable = CompositeDisposable()
+
     init {
         isDataLoadingMutable.value = true
-        newsRepository.getNewsAllObservable()
-            .subscribe { news ->
-                newsListMutable.value = news
-                isDataLoadingMutable.value = false
-            }
+        compositeDisposable.add(
+            newsRepository.getNewsAll()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { news ->
+                    newsListMutable.value = news
+                    isDataLoadingMutable.value = false
+                }
+        )
     }
 
     fun updateSearchQuery(query: String) {
         searchQueryMutable.postValue(query)
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        compositeDisposable.clear()
     }
 }

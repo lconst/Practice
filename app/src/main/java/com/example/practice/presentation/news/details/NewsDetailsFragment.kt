@@ -21,24 +21,30 @@ import com.example.practice.utils.setupToolbar
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import kotlinx.serialization.ExperimentalSerializationApi
 import timber.log.Timber
 
+@ExperimentalSerializationApi
 class NewsDetailsFragment : Fragment(R.layout.fragment_news_details) {
     private val binding by viewBinding(FragmentNewsDetailsBinding::bind)
     private val compositeDisposable = CompositeDisposable()
     private val repository = PracticeApp.instance.newsRepository
+    private val adapter = NewsDetailsFollowersAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity() as MainActivity).setupToolbar(binding.toolbar)
         setHasOptionsMenu(true)
+        initRecycler()
         getNewsDetails()
-        handleNewsCounter()
     }
 
     private fun markNewsAsRead(news: News) {
-        news.isRead = true
-        repository.update(news)
+        if (!news.isRead) {
+            news.isRead = true
+            repository.update(news)
+            handleNewsCounter()
+        }
     }
 
     private fun handleNewsCounter() {
@@ -68,20 +74,21 @@ class NewsDetailsFragment : Fragment(R.layout.fragment_news_details) {
         )
     }
 
-    private fun initRecycler(news: News) {
-        binding.recycler.adapter = NewsDetailsFollowersAdapter(news.followers)
+    private fun initRecycler() {
+        binding.recycler.adapter = adapter
     }
 
     private fun getNewsDetails() {
         val args: NewsDetailsFragmentArgs by navArgs()
-        repository.getNewsById(args.newsId)
+        val disposable = repository.getNewsById(args.newsId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { news ->
-                initRecycler(news)
+                adapter.submitList(news.followers)
                 setData(news)
                 markNewsAsRead(news)
             }
+        compositeDisposable.add(disposable)
     }
 
     private fun share() {
