@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/uploadPhoto"
+        style="@style/TextStyle16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_photo_dialog"
+        android:layout_marginTop="30dp"
+        android:drawablePadding="@dimen/margin_photo_dialog"
+        android:text="@string/upload_photo"
+        app:drawableLeftCompat="@drawable/ic_upload" />
+
+    <TextView
+        android:id="@+id/makePhoto"
+        style="@style/TextStyle16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_photo_dialog"
+        android:layout_marginTop="@dimen/margin_top_photo_dialog"
+        android:drawablePadding="@dimen/margin_photo_dialog"
+        android:text="@string/make_photo"
+        app:drawableLeftCompat="@drawable/ic_camera" />
+
+    <TextView
+        android:id="@+id/deletePhoto"
+        style="@style/TextStyle16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_photo_dialog"
+        android:layout_marginTop="@dimen/margin_top_photo_dialog"
+        android:layout_marginBottom="28dp"
+        android:drawablePadding="@dimen/margin_photo_dialog"
+        android:text="@string/delete"
+        app:drawableLeftCompat="@drawable/ic_delete" />
+</LinearLayout>

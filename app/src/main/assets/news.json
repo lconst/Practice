@@ -1,0 +1,696 @@
+[
+  {
+    "id": 0,
+    "posterResourceName": "news_image_1",
+    "title": "Спонсоры отремонтируют школу-интернат",
+    "dateStart": 1639915437,
+    "dateEnd": 1642507437,
+    "owner": "Благотворительный Фонд «Счастливый Мир»",
+    "location": "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+    "phoneNumbers": [
+      "+7 (937) 037 37-73",
+      "+7 (937) 016 16-16"
+    ],
+    "email": "help@mail.ru",
+    "imagesResourcesNames": [
+      "cardimage_1",
+      "cardimage_2",
+      "cardimage_3"
+    ],
+    "description": "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
+    "site": "https://help.com",
+    "followers": [
+      {
+        "id": 1,
+        "name": "Some1",
+        "avatarResourceName": "photo_1"
+      },
+      {
+        "id": 2,
+        "name": "Some2",
+        "avatarResourceName": "photo_2"
+      },
+      {
+        "id": 3,
+        "name": "Some3",
+        "avatarResourceName": "photo_3"
+      },
+      {
+        "id": 4,
+        "name": "Some4",
+        "avatarResourceName": "photo_4"
+      },
+      {
+        "id": 5,
+        "name": "Some5",
+        "avatarResourceName": "photo_5"
+      },
+      {
+        "id": 6,
+        "name": "Some6",
+        "avatarResourceName": "photo_1"
+      }
+    ],
+    "categoriesId": [
+      1
+    ]
+  },
+  {
+    "id": 2,
+    "posterResourceName": "news_image_2",
+    "title": "Новость для пожилых с животными",
+    "dateStart": 1639742420,
+    "dateEnd": 1639742420,
+    "owner": "Благотворительный Фонд «Счастливый Мир»",
+    "location": "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+    "phoneNumbers": [
+      "+7 (937) 037 37-73",
+      "+7 (937) 016 16-16"
+    ],
+    "email": "help@mail.ru",
+    "imagesResourcesNames": [
+      "cardimage_1",
+      "cardimage_2",
+      "cardimage_3"
+    ],
+    "description": "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
+    "site": "https://help.com",
+    "followers": [
+      {
+        "id": 1,
+        "name": "Some1",
+        "avatarResourceName": "photo_1"
+      },
+      {
+        "id": 2,
+        "name": "Some2",
+        "avatarResourceName": "photo_2"
+      },
+      {
+        "id": 3,
+        "name": "Some3",
+        "avatarResourceName": "photo_3"
+      },
+      {
+        "id": 4,
+        "name": "Some4",
+        "avatarResourceName": "photo_4"
+      },
+      {
+        "id": 5,
+        "name": "Some5",
+        "avatarResourceName": "photo_5"
+      },
+      {
+        "id": 6,
+        "name": "Some6",
+        "avatarResourceName": "photo_1"
+      }
+    ],
+    "categoriesId": [
+      2
+    ]
+  },
+  {
+    "id": 4,
+    "posterResourceName": "news_image_2",
+    "title": "Семейный фестиваль «День радости»",
+    "dateStart": 1639742420,
+    "dateEnd": 1639742420,
+    "owner": "Созидание",
+    "location": "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+    "phoneNumbers": [
+      "+7 (937) 037 37-73",
+      "+7 (937) 016 16-16"
+    ],
+    "email": "help@mail.ru",
+    "imagesResourcesNames": [
+      "cardimage_1",
+      "cardimage_2",
+      "cardimage_3"
+    ],
+    "description": "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
+    "site": "https://help.com",
+    "followers": [
+      {
+        "id": 1,
+        "name": "Some1",
+        "avatarResourceName": "photo_1"
+      },
+      {
+        "id": 2,
+        "name": "Some2",
+        "avatarResourceName": "photo_2"
+      },
+      {
+        "id": 3,
+        "name": "Some3",
+        "avatarResourceName": "photo_3"
+      },
+      {
+        "id": 4,
+        "name": "Some4",
+        "avatarResourceName": "photo_4"
+      },
+      {
+        "id": 5,
+        "name": "Some5",
+        "avatarResourceName": "photo_5"
+      },
+      {
+        "id": 6,
+        "name": "Some6",
+        "avatarResourceName": "photo_1"
+      }
+    ],
+    "categoriesId": [
+      3
+    ]
+  },
+  {
+    "id": 5,
+    "posterResourceName": "news_image_2",
+    "title": "Осенний Фестиваль Шарлотки",
+    "dateStart": 1639742420,
+    "dateEnd": 1639742420,
+    "owner": "Провидение",
+    "location": "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+    "phoneNumbers": [
+      "+7 (937) 037 37-73",
+      "+7 (937) 016 16-16"
+    ],
+    "email": "help@mail.ru",
+    "imagesResourcesNames": [
+      "cardimage_1",
+      "cardimage_2",
+      "cardimage_3"
+    ],
+    "description": "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
+    "site": "https://help.com",
+    "followers": [
+      {
+        "id": 1,
+        "name": "Some1",
+        "avatarResourceName": "photo_1"
+      },
+      {
+        "id": 2,
+        "name": "Some2",
+        "avatarResourceName": "photo_2"
+      },
+      {
+        "id": 3,
+        "name": "Some3",
+        "avatarResourceName": "photo_3"
+      },
+      {
+        "id": 4,
+        "name": "Some4",
+        "avatarResourceName": "photo_4"
+      },
+      {
+        "id": 5,
+        "name": "Some5",
+        "avatarResourceName": "photo_5"
+      },
+      {
+        "id": 6,
+        "name": "Some6",
+        "avatarResourceName": "photo_1"
+      }
+    ],
+    "categoriesId": [
+      4
+    ]
+  },
+  {
+    "id": 6,
+    "posterResourceName": "news_image_2",
+    "title": "Благотворительный пленэр «Краски жизни»",
+    "dateStart": 1639742420,
+    "dateEnd": 1639742420,
+    "owner": "Интернет-фонд «Помоги.org»",
+    "location": "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+    "phoneNumbers": [
+      "+7 (937) 037 37-73",
+      "+7 (937) 016 16-16"
+    ],
+    "email": "help@mail.ru",
+    "imagesResourcesNames": [
+      "cardimage_1",
+      "cardimage_2",
+      "cardimage_3"
+    ],
+    "description": "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
+    "site": "https://help.com",
+    "followers": [
+      {
+        "id": 1,
+        "name": "Some1",
+        "avatarResourceName": "photo_1"
+      },
+      {
+        "id": 2,
+        "name": "Some2",
+        "avatarResourceName": "photo_2"
+      },
+      {
+        "id": 3,
+        "name": "Some3",
+        "avatarResourceName": "photo_3"
+      },
+      {
+        "id": 4,
+        "name": "Some4",
+        "avatarResourceName": "photo_4"
+      },
+      {
+        "id": 5,
+        "name": "Some5",
+        "avatarResourceName": "photo_5"
+      },
+      {
+        "id": 6,
+        "name": "Some6",
+        "avatarResourceName": "photo_1"
+      }
+    ],
+    "categoriesId": [
+      5
+    ]
+  },
+  {
+    "id": 7,
+    "posterResourceName": "news_image_2",
+    "title": "Фестиваль «От сердца к сердцу»",
+    "dateStart": 1639742420,
+    "dateEnd": 1639742420,
+    "owner": "АиФ «Доброе сердце»",
+    "location": "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+    "phoneNumbers": [
+      "+7 (937) 037 37-73",
+      "+7 (937) 016 16-16"
+    ],
+    "email": "help@mail.ru",
+    "imagesResourcesNames": [
+      "cardimage_1",
+      "cardimage_2",
+      "cardimage_3"
+    ],
+    "description": "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
+    "site": "https://help.com",
+    "followers": [
+      {
+        "id": 1,
+        "name": "Some1",
+        "avatarResourceName": "photo_1"
+      },
+      {
+        "id": 2,
+        "name": "Some2",
+        "avatarResourceName": "photo_2"
+      },
+      {
+        "id": 3,
+        "name": "Some3",
+        "avatarResourceName": "photo_3"
+      },
+      {
+        "id": 4,
+        "name": "Some4",
+        "avatarResourceName": "photo_4"
+      },
+      {
+        "id": 5,
+        "name": "Some5",
+        "avatarResourceName": "photo_5"
+      },
+      {
+        "id": 6,
+        "name": "Some6",
+        "avatarResourceName": "photo_1"
+      }
+    ],
+    "categoriesId": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "id": 8,
+    "posterResourceName": "news_image_2",
+    "title": "Фестиваль «День Яблок»",
+    "dateStart": 1639742420,
+    "dateEnd": 1639742420,
+    "owner": "„Дети Земли“",
+    "location": "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+    "phoneNumbers": [
+      "+7 (937) 037 37-73",
+      "+7 (937) 016 16-16"
+    ],
+    "email": "help@mail.ru",
+    "imagesResourcesNames": [
+      "cardimage_1",
+      "cardimage_2",
+      "cardimage_3"
+    ],
+    "description": "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
+    "site": "https://help.com",
+    "followers": [
+      {
+        "id": 1,
+        "name": "Some1",
+        "avatarResourceName": "photo_1"
+      },
+      {
+        "id": 2,
+        "name": "Some2",
+        "avatarResourceName": "photo_2"
+      },
+      {
+        "id": 3,
+        "name": "Some3",
+        "avatarResourceName": "photo_3"
+      },
+      {
+        "id": 4,
+        "name": "Some4",
+        "avatarResourceName": "photo_4"
+      },
+      {
+        "id": 5,
+        "name": "Some5",
+        "avatarResourceName": "photo_5"
+      },
+      {
+        "id": 6,
+        "name": "Some6",
+        "avatarResourceName": "photo_1"
+      }
+    ],
+    "categoriesId": [
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "id": 9,
+    "posterResourceName": "news_image_2",
+    "title": "Мастер-класс «Кошка в книжке»",
+    "dateStart": 1639742420,
+    "dateEnd": 1639742420,
+    "owner": "«Звезда Милосердия»",
+    "location": "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+    "phoneNumbers": [
+      "+7 (937) 037 37-73",
+      "+7 (937) 016 16-16"
+    ],
+    "email": "help@mail.ru",
+    "imagesResourcesNames": [
+      "cardimage_1",
+      "cardimage_2",
+      "cardimage_3"
+    ],
+    "description": "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
+    "site": "https://help.com",
+    "followers": [
+      {
+        "id": 1,
+        "name": "Some1",
+        "avatarResourceName": "photo_1"
+      },
+      {
+        "id": 2,
+        "name": "Some2",
+        "avatarResourceName": "photo_2"
+      },
+      {
+        "id": 3,
+        "name": "Some3",
+        "avatarResourceName": "photo_3"
+      },
+      {
+        "id": 4,
+        "name": "Some4",
+        "avatarResourceName": "photo_4"
+      },
+      {
+        "id": 5,
+        "name": "Some5",
+        "avatarResourceName": "photo_5"
+      },
+      {
+        "id": 6,
+        "name": "Some6",
+        "avatarResourceName": "photo_1"
+      }
+    ],
+    "categoriesId": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "id": 10,
+    "posterResourceName": "news_image_2",
+    "title": "Кулинарный фестиваль «Плюшки-ватрушки»",
+    "dateStart": 1639742420,
+    "dateEnd": 1639742420,
+    "owner": "Счастливый мир",
+    "location": "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+    "phoneNumbers": [
+      "+7 (937) 037 37-73",
+      "+7 (937) 016 16-16"
+    ],
+    "email": "help@mail.ru",
+    "imagesResourcesNames": [
+      "cardimage_1",
+      "cardimage_2",
+      "cardimage_3"
+    ],
+    "description": "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
+    "site": "https://help.com",
+    "followers": [
+      {
+        "id": 1,
+        "name": "Some1",
+        "avatarResourceName": "photo_1"
+      },
+      {
+        "id": 2,
+        "name": "Some2",
+        "avatarResourceName": "photo_2"
+      },
+      {
+        "id": 3,
+        "name": "Some3",
+        "avatarResourceName": "photo_3"
+      },
+      {
+        "id": 4,
+        "name": "Some4",
+        "avatarResourceName": "photo_4"
+      },
+      {
+        "id": 5,
+        "name": "Some5",
+        "avatarResourceName": "photo_5"
+      },
+      {
+        "id": 6,
+        "name": "Some6",
+        "avatarResourceName": "photo_1"
+      }
+    ],
+    "categoriesId": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "id": 11,
+    "posterResourceName": "news_image_2",
+    "title": "Выставка фотографий «ОБЪЕКТИВная благотворительность»",
+    "dateStart": 1639742420,
+    "dateEnd": 1639742420,
+    "owner": "«Милосердие детям»",
+    "location": "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+    "phoneNumbers": [
+      "+7 (937) 037 37-73",
+      "+7 (937) 016 16-16"
+    ],
+    "email": "help@mail.ru",
+    "imagesResourcesNames": [
+      "cardimage_1",
+      "cardimage_2",
+      "cardimage_3"
+    ],
+    "description": "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
+    "site": "https://help.com",
+    "followers": [
+      {
+        "id": 1,
+        "name": "Some1",
+        "avatarResourceName": "photo_1"
+      },
+      {
+        "id": 2,
+        "name": "Some2",
+        "avatarResourceName": "photo_2"
+      },
+      {
+        "id": 3,
+        "name": "Some3",
+        "avatarResourceName": "photo_3"
+      },
+      {
+        "id": 4,
+        "name": "Some4",
+        "avatarResourceName": "photo_4"
+      },
+      {
+        "id": 5,
+        "name": "Some5",
+        "avatarResourceName": "photo_5"
+      },
+      {
+        "id": 6,
+        "name": "Some6",
+        "avatarResourceName": "photo_1"
+      }
+    ],
+    "categoriesId": [
+      2,
+      3,
+      5
+    ]
+  },
+  {
+    "id": 12,
+    "posterResourceName": "news_image_2",
+    "title": "Флешмоб «Красный день календаря»",
+    "dateStart": 1639742420,
+    "dateEnd": 1639742420,
+    "owner": "«Весна в сердце»",
+    "location": "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+    "phoneNumbers": [
+      "+7 (937) 037 37-73",
+      "+7 (937) 016 16-16"
+    ],
+    "email": "help@mail.ru",
+    "imagesResourcesNames": [
+      "cardimage_1",
+      "cardimage_2",
+      "cardimage_3"
+    ],
+    "description": "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
+    "site": "https://help.com",
+    "followers": [
+      {
+        "id": 1,
+        "name": "Some1",
+        "avatarResourceName": "photo_1"
+      },
+      {
+        "id": 2,
+        "name": "Some2",
+        "avatarResourceName": "photo_2"
+      },
+      {
+        "id": 3,
+        "name": "Some3",
+        "avatarResourceName": "photo_3"
+      },
+      {
+        "id": 4,
+        "name": "Some4",
+        "avatarResourceName": "photo_4"
+      },
+      {
+        "id": 5,
+        "name": "Some5",
+        "avatarResourceName": "photo_5"
+      },
+      {
+        "id": 6,
+        "name": "Some6",
+        "avatarResourceName": "photo_1"
+      }
+    ],
+    "categoriesId": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "id": 13,
+    "posterResourceName": "news_image_2",
+    "title": "Выставка «Художественного центра «Дети Марии»",
+    "dateStart": 1639742420,
+    "dateEnd": 1639742420,
+    "owner": "Благотворительный фонд \"Радуга\"",
+    "location": "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+    "phoneNumbers": [
+      "+7 (937) 037 37-73",
+      "+7 (937) 016 16-16"
+    ],
+    "email": "help@mail.ru",
+    "imagesResourcesNames": [
+      "cardimage_1",
+      "cardimage_2",
+      "cardimage_3"
+    ],
+    "description": "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
+    "site": "https://help.com",
+    "followers": [
+      {
+        "id": 1,
+        "name": "Some1",
+        "avatarResourceName": "photo_1"
+      },
+      {
+        "id": 2,
+        "name": "Some2",
+        "avatarResourceName": "photo_2"
+      },
+      {
+        "id": 3,
+        "name": "Some3",
+        "avatarResourceName": "photo_3"
+      },
+      {
+        "id": 4,
+        "name": "Some4",
+        "avatarResourceName": "photo_4"
+      },
+      {
+        "id": 5,
+        "name": "Some5",
+        "avatarResourceName": "photo_5"
+      },
+      {
+        "id": 6,
+        "name": "Some6",
+        "avatarResourceName": "photo_1"
+      }
+    ],
+    "categoriesId": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  }
+]

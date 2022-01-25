@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_navigation"
+    app:startDestination="@id/navigationHelpFragment">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.practice.presentation.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/navigationSearchFragment"
+        android:name="com.example.practice.presentation.search.SearchFragment"
+        android:label="@string/search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/navigationHistoryFragment"
+        android:name="com.example.practice.presentation.history.HistoryFragment"
+        android:label="@string/history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/navigationProfileFragment"
+        android:name="com.example.practice.presentation.profile.view.ProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/navigationNewsFragment"
+        android:name="com.example.practice.presentation.news.NewsFragment"
+        android:label="@string/news"
+        tools:layout="@layout/fragment_news" >
+        <action
+            android:id="@+id/action_navigationNewsFragment_to_filterFragment"
+            app:destination="@id/filterFragment"
+            app:launchSingleTop="false" />
+        <action
+            android:id="@+id/action_navigationNewsFragment_to_newsDetails"
+            app:destination="@id/newsDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigationHelpFragment"
+        android:name="com.example.practice.presentation.help.HelpFragment"
+        android:label="@string/help"
+        tools:layout="@layout/fragment_help"/>
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="com.example.practice.presentation.news.filter.FilterFragment"
+        android:label="@string/filter"
+        tools:layout="@layout/fragment_filter_category" />
+    <fragment
+        android:id="@+id/newsDetails"
+        android:name="com.example.practice.presentation.news.details.NewsDetailsFragment"
+        android:label="NewsDetails"
+        tools:layout="@layout/fragment_news_details">
+        <argument
+            android:name="newsId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+</navigation>
